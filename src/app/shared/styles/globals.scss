@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Biennale';          /* Name you want to use in your CSS */
+    src: url('/poppins.woff2') format('woff2'),     /* Modern browsers */
+        //  url('/biennale.woff') format('woff'),       /* Older browsers */
+         url('/poppins.ttf') format('truetype');    /* Safari, Android, iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+/* Step 2: Use the font */
+body{
+    font-family: 'Biennale', sans-serif;    /* Always include a fallback */
+}
+
+@media (max-width: 767px) {
+    .hero-section {
+      margin-bottom: 120px; /* Increase the bottom margin to prevent overlapping */
+    }
+  
+    .services-box {
+      transform: translateY(80%); /* Adjust the vertical position of the services box */
+    }
+  }
