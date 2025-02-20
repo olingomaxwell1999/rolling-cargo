@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./shared/styles/globals.scss";
 import Footer from "./shared/Components/Footer/Footer";
 import ScrollToTopButton from "./shared/Components/ScrollToTopButton/ScrollToTopButton";
 import Navbar from "./shared/Components/Navbar/Navbar";
 import WhatsAppButton from "./shared/Components/WhatsAppButton/WhatsAppButton";
-const inter = Inter({ subsets: ["latin"] });
+import GoogleAnalytics from "./shared/Components/Analytics/google";
 
 export const metadata: Metadata = {
   title: "Rolling Cargo",
@@ -20,7 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
+        <GoogleAnalytics />
         <Navbar />
         {children}
         <WhatsAppButton />
