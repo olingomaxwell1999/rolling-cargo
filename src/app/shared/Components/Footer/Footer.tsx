@@ -117,7 +117,7 @@ const Footer = () => {
                 { name: "Sea Cargo", url: "/sea-cargo" },
                 { name: "Online Shopping", url: "/online-shopping" },
                 { name: "Blog", url: "/blog" },
-                { name: "Privacy Policy", url: "/privacy" },
+                { name: " Privacy Policy", url: "/privacy" },
               ].map((link, index) => (
                 <React.Fragment key={link.name}>
                   <Link href={link.url} className="hover:text-gray-600">
