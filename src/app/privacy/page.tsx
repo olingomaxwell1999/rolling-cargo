@@ -110,7 +110,7 @@ const PrivacyPolicy: React.FC = () => {
             {/* Hero Section */}
             <motion.div
               variants={itemVariants}
-              className="bg-blue-800 text-white px-8 py-12"
+              className="bg-[#0f1031] text-white px-8 py-12"
             >
               <h1 className="text-4xl font-bold mb-4">Privacy Policy</h1>
               <p className="text-blue-100">Last Updated: April 2025</p>
@@ -124,7 +124,7 @@ const PrivacyPolicy: React.FC = () => {
                   variants={itemVariants}
                   className="mb-10 last:mb-0"
                 >
-                  <h2 className="text-2xl font-semibold text-blue-900 mb-4 border-b border-blue-100 pb-2">
+                  <h2 className="text-2xl font-semibold text-[#0f1031] mb-4 border-b border-blue-100 pb-2">
                     {section.title}
                   </h2>
 
@@ -153,7 +153,7 @@ const PrivacyPolicy: React.FC = () => {
                       {section.contactInfo.map((info, i) => (
                         <p
                           key={i}
-                          className="mb-2 last:mb-0 text-blue-900 font-medium"
+                          className="mb-2 last:mb-0 text-[#0f1031] font-medium"
                         >
                           {info}
                         </p>
