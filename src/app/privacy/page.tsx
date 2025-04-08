@@ -99,46 +99,6 @@ const PrivacyPolicy: React.FC = () => {
       </Head>
 
       <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen">
-        {/* Header */}
-        <header className="bg-blue-900 text-white shadow-md">
-          <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-            <div className="flex items-center space-x-2">
-              {/* Logo placeholder */}
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                {mounted && (
-                  <Image
-                    src="/api/placeholder/48/48"
-                    alt="Rolling Cargo Logo"
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                  />
-                )}
-              </div>
-              <h1 className="text-2xl font-bold">Rolling Cargo</h1>
-            </div>
-            <nav>
-              <ul className="flex space-x-6">
-                <li>
-                  <a href="#" className="hover:text-blue-200 transition-colors">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-blue-200 transition-colors">
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-blue-200 transition-colors">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </header>
-
         {/* Main Content */}
         <main className="container mx-auto px-4 py-12">
           <motion.div
