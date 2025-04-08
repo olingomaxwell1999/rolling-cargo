@@ -83,11 +83,14 @@ const Navbar: React.FC = () => {
                 alt="Logo"
                 width={isMobile ? 50 : 80}
                 height={isMobile ? 50 : 80}
-                style={{ objectFit: 'contain' }}
+                style={{ objectFit: "contain" }}
                 onError={(e) => {
                   console.error("Error loading logo:", e);
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.insertAdjacentHTML('afterend', '<span class="text-xl font-bold">Your Logo</span>');
+                  e.currentTarget.style.display = "none";
+                  e.currentTarget.insertAdjacentHTML(
+                    "afterend",
+                    '<span class="text-xl font-bold">Your Logo</span>'
+                  );
                 }}
               />
               <span className="ml-2 text-sm text-gray-500 font-medium hidden sm:block">
@@ -202,19 +205,25 @@ const Navbar: React.FC = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Company</h3>
               <ul className="space-y-2">
-                {["Careers", "Blog", "Feedback", "FAQ", "Contact us", "Terms & Conditions"].map(
-                  (item) => (
-                    <li key={item}>
-                      <NavLink
-                        href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="text-gray-600 hover:text-gray-900"
-                        isMenuLink={true}
-                      >
-                        {item}
-                      </NavLink>
-                    </li>
-                  )
-                )}
+                {[
+                  "Careers",
+                  "Blog",
+                  "Feedback",
+                  "FAQ",
+                  "Contact us",
+                  "Terms & Conditions",
+                  "Privacy",
+                ].map((item) => (
+                  <li key={item}>
+                    <NavLink
+                      href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                      className="text-gray-600 hover:text-gray-900"
+                      isMenuLink={true}
+                    >
+                      {item}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
