@@ -1,4 +1,5 @@
 // pages/privacy-policy.tsx
+"use client";
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
