@@ -89,13 +89,19 @@ const Footer = () => {
             </select>
             <div className="flex items-center mb-2">
               <Phone className="mr-2 text-gray-800" size={18} />
-              <a href={`tel:${selectedCountry.phone}`} className="hover:text-gray-600">
+              <a
+                href={`tel:${selectedCountry.phone}`}
+                className="hover:text-gray-600"
+              >
                 {selectedCountry.phone}
               </a>
             </div>
             <div className="flex items-center">
               <Mail className="mr-2 text-gray-800" size={18} />
-              <a href={`mailto:${selectedCountry.email}`} className="hover:text-gray-600">
+              <a
+                href={`mailto:${selectedCountry.email}`}
+                className="hover:text-gray-600"
+              >
                 {selectedCountry.email}
               </a>
             </div>
@@ -111,6 +117,7 @@ const Footer = () => {
                 { name: "Sea Cargo", url: "/sea-cargo" },
                 { name: "Online Shopping", url: "/online-shopping" },
                 { name: "Blog", url: "/blog" },
+                { name: "Privacy Policy", url: "/privacy" },
               ].map((link, index) => (
                 <React.Fragment key={link.name}>
                   <Link href={link.url} className="hover:text-gray-600">
@@ -155,11 +162,7 @@ const Footer = () => {
                 <Instagram size={24} />
               </Link>
             </div>
-            <img 
-              src="/aeo.png" 
-              alt="Social Media" 
-              className="w-40 h-20"
-            />
+            <img src="/aeo.png" alt="Social Media" className="w-40 h-20" />
           </div>
         </div>
       </div>
