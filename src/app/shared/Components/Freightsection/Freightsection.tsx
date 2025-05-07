@@ -43,7 +43,7 @@ const airFreightRates: Record<Country, { baseRate: number; minimumRate?: number 
   Netherlands: { baseRate: 11 }, // USD
   Italy: { baseRate: 11 }, // USD
   "South Africa": { baseRate: 13 }, // USD
-  Dubai: { baseRate: 7.5, minimumRate: 10 } // USD
+  Dubai: { baseRate: 8, minimumRate: 10 } // USD
 };
 
 const handlingFees: Record<Country, { air: number; sea?: number }> = {
@@ -60,7 +60,7 @@ const seaFreightRates: Partial<Record<Country, number | { regular: number; small
   UK: { regular: 2.5 }, // GBP per CBM
   Dubai: { regular: 60000, small: 12000 }, // KES
   China: { regular: 60000, small: 12000 }, // KES
-  Turkey: { regular: 800, large: 600 }, // USD
+  Turkey: { regular: 750, large: 600 }, // USD
   Netherlands: { regular: 5 } // USD per CBM
 };
 
@@ -205,13 +205,18 @@ const FreightCalculator: React.FC = () => {
 
   // Handle radio button changes
   const handleRadioChange = (field: 'freightType' | 'country', value: FreightType | Country) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    
     // When switching freight type, clear country selection
     if (field === 'freightType') {
-      setFormData(prev => ({ ...prev, freightType: value as FreightType, country: null }));
-    } else {
-      setFormData(prev => ({ ...prev, [field]: value }));
+      setFormData(prev => ({ 
+        ...prev, 
+        freightType: value as FreightType, 
+        country: null 
+      }));
+    } else if (field === 'country') {
+      setFormData(prev => ({ 
+        ...prev, 
+        country: value as Country 
+      }));
     }
   };
 
