@@ -1,8 +1,8 @@
-// page.tsx
 import React from "react";
 import Head from "next/head";
 import Blog from "../shared/Components/Blog/Blog";
-import Bannerblog from "../shared/Components/Bannerblog/Bannerblog";
+import Banner from "../shared/Components/Banner/Banner";
+import { blogBannerContent } from "@/data/data";
 
 const page: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const page: React.FC = () => {
       </Head>
 
       <main className="container mx-auto py-8">
-        <Bannerblog />
+        <Banner content={blogBannerContent} imageSrc="RC Jan-72.jpg" />
         <Blog />
       </main>
     </div>

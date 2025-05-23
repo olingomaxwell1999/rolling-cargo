@@ -3,15 +3,20 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { aboutUsBannerContent } from "@/data/data";
+import { BannerContent } from "@/types/banner.types";
 
-const BannerAboutUs: React.FC = () => {
+interface BannerProps {
+  content: BannerContent;
+  imageSrc: string;
+}
+
+const Banner: React.FC<BannerProps> = ({ content, imageSrc }) => {
   return (
     <div className="relative mt-16 w-full h-[20rem] md:h-[28rem] lg:h-[32rem] overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/About Us Page.jpg"
-        alt="Background"
+        src={imageSrc}
+        alt={`${content.title} Banner`}
         fill
         sizes="100vw"
         quality={85}
@@ -22,7 +27,7 @@ const BannerAboutUs: React.FC = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white px-4 text-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-          {aboutUsBannerContent.title}
+          {content.title}
         </h1>
 
         {/* Breadcrumbs */}
@@ -30,15 +35,15 @@ const BannerAboutUs: React.FC = () => {
           aria-label="Breadcrumb"
           className="flex items-center space-x-2 text-sm md:text-base"
         >
-          {aboutUsBannerContent.breadcrumbs.map((crumb, index) => (
+          {content.breadcrumbs.map((crumb, index) => (
             <React.Fragment key={crumb.href}>
               <Link
                 href={crumb.href}
-                className="hover:underline hover:text-gray-300 transition-colors duration-200"
+                className="hover:text-gray-300 transition-colors duration-200"
               >
                 {crumb.label}
               </Link>
-              {index < aboutUsBannerContent.breadcrumbs.length - 1 && (
+              {index < content.breadcrumbs.length - 1 && (
                 <span aria-hidden="true">/</span>
               )}
             </React.Fragment>
@@ -49,4 +54,4 @@ const BannerAboutUs: React.FC = () => {
   );
 };
 
-export default BannerAboutUs;
+export default Banner;

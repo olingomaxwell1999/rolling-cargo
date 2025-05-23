@@ -16,6 +16,7 @@ import { NotFoundContent } from "@/types/not-found.types";
 import { AirCargoContent } from "@/types/air-cargo-text.types";
 import { AppDownloadContent } from "@/types/app-download.types";
 import { BannerContent } from "@/types/banner.types";
+import { Job } from "@/types/carreers.types";
 
 // Gallery data
 
@@ -505,3 +506,204 @@ export const aboutUsBannerContent: BannerContent = {
     },
   ],
 };
+
+// Banner data(Air Cargo)
+
+export const airCargoBannerContent: BannerContent = {
+  title: "Air Cargo",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Air Cargo", href: "/air-cargo" }, // corrected URL typo from `/air-cargro` to `/air-cargo`
+  ],
+};
+
+// Banner data(Sea Cargo)
+
+export const seaCargoBannerContent: BannerContent = {
+  title: "Sea Cargo",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Sea Cargo", href: "/sea-cargo" }, // corrected URL typo from `/air-cargro` to `/air-cargo`
+  ],
+};
+
+// Banner data(Apply)
+export const applyBannerContent: BannerContent = {
+  title: "Apply",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Apply", href: "/apply" },
+  ],
+};
+
+// Banner data(Services)
+export const servicesBannerContent: BannerContent = {
+  title: "Services",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Services", href: "/services" },
+  ],
+};
+
+// Banner data(Privacy Policy)
+export const privacyPolicyBannerContent: BannerContent = {
+  title: "Privacy Policy",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+  ],
+};
+
+// Banner data(FAQ)
+export const faqBannerContent: BannerContent = {
+  title: "FAQ",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "FAQ", href: "/faq" },
+  ],
+};
+
+// Banner data(Shipping)
+export const shippingBannerContent: BannerContent = {
+  title: "Shipping",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Shipping", href: "/shipping" },
+  ],
+};
+
+// Banner data(Terms)
+export const termsBannerContent: BannerContent = {
+  title: "Terms & Conditions",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Terms & Conditions", href: "/terms-&-conditions" },
+  ],
+};
+
+// Banner data(Tracking)
+export const trackingBannerContent: BannerContent = {
+  title: "Tracking",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Tracking", href: "/tracking" },
+  ],
+};
+
+// Banner data(Blog)
+export const blogBannerContent: BannerContent = {
+  title: "Blog",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Blog", href: "/blog" },
+  ],
+};
+
+// Banner Data (Feedback)
+
+export const feedbackBannerContent: BannerContent = {
+  title: "feedback",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Feedback", href: "/feedback" },
+  ],
+};
+
+// Banner Data (Online Shopping)
+
+export const onlineShoppingBannerContent: BannerContent = {
+  title: "Online Shopping",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Online Shopping", href: "/online-shopping" },
+  ],
+};
+
+// Banner (Cost Estimator)
+
+export const costEstimatorBannerContent: BannerContent = {
+  title: "Cost Estimator",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Cost Estimator", href: "/cost-estimator" },
+  ],
+};
+
+// Banner (Contact)
+
+export const contactBannerContent: BannerContent = {
+  title: "Contact Us",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Contact Us", href: "/contact-us" },
+  ],
+};
+
+// Banner data(Carrers)
+
+export const careersBannerContent: BannerContent = {
+  title: "Careers",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Careers", href: "/careers" },
+  ],
+};
+
+// Banner Data (Custom Clearence)
+
+export const customClearenceBannerContent: BannerContent = {
+  title: "Custom Clearence",
+  breadcrumbs: [
+    { label: "Homepage", href: "/" },
+    { label: "Custom Clearence", href: "/custom-clearence" },
+  ],
+};
+
+// Jobs Data (Carrers Page)
+
+export const availableJobs: Job[] = [
+  {
+    title: "Marketing Executive",
+    description:
+      "The Marketing Executive is responsible for planning, developing, and implementing marketing campaigns to promote the company's products and services.",
+    responsibilities: [
+      "Develop and implement marketing campaigns across various channels.",
+      "Conduct market research to identify target audiences and trends.",
+      "Create and manage content for digital and print platforms.",
+      "Monitor campaign performance and adjust strategies as needed.",
+      "Collaborate with sales team for alignment.",
+      "Coordinate events, trade shows, and promotional activities.",
+      "Prepare reports on marketing activities.",
+      "Stay up-to-date with marketing trends and technologies.",
+    ],
+    skills: [
+      "Creative thinking and problem-solving abilities.",
+      "Strong organizational and project management skills.",
+      "Ability to analyze data and derive actionable insights.",
+      "High attention to detail.",
+      "Adaptability in fast-paced environments.",
+    ],
+  },
+  {
+    title: "Sales Executive",
+    description:
+      "The Sales Executive is responsible for driving revenue growth by identifying clients, generating leads, and closing sales.",
+    responsibilities: [
+      "Identify and develop new business opportunities.",
+      "Build and maintain relationships with clients.",
+      "Conduct sales presentations and product demos.",
+      "Negotiate and close deals ensuring satisfaction.",
+      "Meet and exceed sales targets.",
+      "Stay updated with industry trends and competitors.",
+      "Collaborate with internal teams for seamless delivery.",
+      "Submit regular sales reports and forecasts.",
+    ],
+    skills: [
+      "Strong communication and interpersonal skills.",
+      "Excellent customer service and relationship-building.",
+      "Results-driven mindset with motivation to meet targets.",
+      "Problem-solving and strategic thinking.",
+      "Resilience in fast-paced sales environments.",
+    ],
+  },
+];
