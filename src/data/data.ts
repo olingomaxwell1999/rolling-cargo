@@ -13,6 +13,7 @@ import {
 import { GalleryItem, Category } from "../types/gallery.types";
 import { AboutContent, AboutQuote } from "@/types/about.types";
 import { NotFoundContent } from "@/types/not-found.types";
+import { AirCargoContent } from "@/types/air-cargo-text.types";
 
 // Gallery data
 
@@ -460,4 +461,13 @@ export const notFoundContent: NotFoundContent = {
   description:
     "Oops! The page you are looking for does not exist or has been moved.",
   ctaText: "Return to Home",
+};
+
+// Air Cargo text data
+
+export const airCargoContent: AirCargoContent = {
+  title: "Fast & Efficient.",
+  description: `Air freight transport is the most reliable and efficient way to get your goods worldwide from one location to another. Rolling Cargo delivers fast, safe and sound air freight solutions. We have extensive and well-established partnerships with different industry players. This enables us to offer better and most competitive rates. We deliver using the shortest possible transit time with optimum routings that are cost efficient.
+
+From the point of origin, to consolidation, customs clearance, all the way through to delivery to end customers, we’ve got your business and markets covered anywhere in the world. Through our secure cargo tracking service, customers are able to track their shipments and obtain real-time information regarding their freight anytime. We facilitate the handling, packing, customs, consolidation services and door-to-door deliveries.`,
 };
