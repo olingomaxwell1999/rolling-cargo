@@ -330,6 +330,8 @@ export const stats: StatCardData[] = [
     changeType: "positive",
     icon: DollarSign,
     color: "bg-gradient-to-r from-green-500 to-green-600",
+    hoverColor: "hover:bg-green-600",
+    description: "View detailed revenue reports",
   },
   {
     title: "Active Shipments",
@@ -338,6 +340,8 @@ export const stats: StatCardData[] = [
     changeType: "positive",
     icon: Package,
     color: "bg-gradient-to-r from-blue-500 to-blue-600",
+    hoverColor: "hover:bg-blue-600",
+    description: "Create a new shipment order quickly",
   },
   {
     title: "Fleet Utilization",
@@ -346,14 +350,18 @@ export const stats: StatCardData[] = [
     changeType: "positive",
     icon: Truck,
     color: "bg-gradient-to-r from-purple-500 to-purple-600",
+    hoverColor: "hover:bg-green-600",
+    description: "Monitor fleet performance and maintenance",
   },
   {
     title: "Active Clients",
+    description: "Manage client relationships",
     value: "342",
     change: "+18.7%",
     changeType: "positive",
     icon: Users,
     color: "bg-gradient-to-r from-orange-500 to-orange-600",
+    hoverColor: "hover:bg-purple-600",
   },
 ];
 

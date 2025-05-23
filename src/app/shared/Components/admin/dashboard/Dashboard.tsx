@@ -1,21 +1,8 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { Package, Truck, Users } from "lucide-react";
 import {
-  DollarSign,
-  Package,
-  Truck,
-  Users,
-  TrendingUp,
-  CheckCircle,
-  Clock,
-  AlertTriangle,
-  Activity,
-  MoreHorizontal,
-} from "lucide-react";
-import {
-  LineChart,
-  Line,
   AreaChart,
   Area,
   XAxis,
@@ -34,7 +21,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   recentShipments,
@@ -45,35 +31,7 @@ import {
 import { StatCard } from "../statcarddata/Statcarddata";
 import { getStatusIcon } from "../statusicon/Statusicon";
 import { getStatusBadge } from "../statusbadge/Statusbadge";
-
-// Animation variants
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
+import { containerVariants, itemVariants } from "@/variants/animations";
 
 const DashboardPage: React.FC = () => {
   return (
@@ -301,29 +259,7 @@ const DashboardPage: React.FC = () => {
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {[
-            {
-              icon: Package,
-              title: "New Shipment",
-              description: "Create a new shipment order quickly",
-              color: "bg-blue-500",
-              hoverColor: "hover:bg-blue-600",
-            },
-            {
-              icon: Truck,
-              title: "Fleet Status",
-              description: "Monitor your fleet in real-time",
-              color: "bg-green-500",
-              hoverColor: "hover:bg-green-600",
-            },
-            {
-              icon: Users,
-              title: "Client Portal",
-              description: "Manage client relationships",
-              color: "bg-purple-500",
-              hoverColor: "hover:bg-purple-600",
-            },
-          ].map((action, index) => (
+          {stats.map((action, index) => (
             <motion.div key={action.title} variants={itemVariants}>
               <Card className="hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6">

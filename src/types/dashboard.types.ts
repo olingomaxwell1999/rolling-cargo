@@ -6,6 +6,8 @@ interface StatCardData {
   changeType: "positive" | "negative";
   icon: React.ElementType;
   color: string;
+  description: string;
+  hoverColor: string;
 }
 
 interface RevenueData {
