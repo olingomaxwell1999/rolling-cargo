@@ -15,8 +15,9 @@ const page: React.FC = () => {
         />
       </Head>
 
-      <main className="container mx-auto py-8">
+      <main>
         <Banner content={blogBannerContent} imageSrc="RC Jan-72.jpg" />
+        <div className="container mx-auto py-8"></div>
         <Blog />
       </main>
     </div>
