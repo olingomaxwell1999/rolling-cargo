@@ -44,6 +44,7 @@ import {
 import { StatCard } from "../statcarddata/Statcarddata";
 import { getStatusIcon } from "../statusicon/Statusicon";
 import { getStatusBadge } from "../statusbadge/Statusbadge";
+import { containerVariants, itemVariants } from "@/variants/animations";
 // Table components will be built inline since @/components/ui/table is not available
 // Select component will be built inline since @/components/ui/select is not available
 

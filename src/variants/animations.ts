@@ -1,5 +1,5 @@
 // Animation variants
-const containerVariants = {
+export const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -9,7 +9,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+export const itemVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
