@@ -1,7 +1,7 @@
 import React from "react";
-import FreightSection from "../shared/Components/Freightsection/Freightsection";
 import Banner from "../shared/Components/Banner/Banner";
 import { costEstimatorBannerContent } from "@/data/data";
+import FreightCalculator from "../shared/Components/Freightsection/Freightsection";
 
 const page = () => {
   return (
@@ -10,7 +10,7 @@ const page = () => {
         content={costEstimatorBannerContent}
         imageSrc="CostEstimator.jpg"
       />
-      <FreightSection />
+      <FreightCalculator />
     </div>
   );
 };

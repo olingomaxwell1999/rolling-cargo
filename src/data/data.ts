@@ -18,6 +18,13 @@ import { AppDownloadContent } from "@/types/app-download.types";
 import { BannerContent } from "@/types/banner.types";
 import { Job } from "@/types/carreers.types";
 import { BlogPost } from "@/types/blog.types";
+import { Office } from "@/types/contact.types";
+import { CustomClearanceContent } from "@/types/customs.types";
+import { FAQItem } from "@/types/faq.types";
+import { Country } from "@/types/footer.types";
+import { CountryName, CurrencyInfo } from "@/types/feright.types";
+import { SolutionItem } from "@/types/solution.types";
+import { Handshake, Wallet } from "lucide-react";
 
 // Gallery data
 
@@ -966,5 +973,365 @@ export const blogPosts: BlogPost[] = [
     image:
       "Blog 6 Cargo Shipping Solutions from Dubai to Kenya Rolling Cargo Delivers Excellence.jpg",
     author: "Rolling Cargo",
+  },
+];
+
+// Offices Data (Contact Us Page)
+
+export const offices: Office[] = [
+  {
+    name: "Nairobi Office (Headquaters)",
+    phone: "+254 709 286 286",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address:
+      "10 Funzi Road, Off Enterprise Road. P.O.BOX 14009-00100 NAIROBI - KENYA",
+  },
+  {
+    name: "Mombasa Office",
+    phone: "(+254) 709 286 286",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address:
+      "Sheikh Abdullas F. Rd, Opposite Alliance Medical Centre Bondeni, Kilifi Corner, Mombasa.",
+  },
+  {
+    name: "UAE – Dubai",
+    phone: "+97 155 919 6774",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address:
+      "Deira, Sabkha Road, Behind Sabkha Bus Station Sabkha Building 1st floor RM 118. Warehouse at Al Hamriya port side gate No.9 next to Mosque Sheikh Murr.",
+  },
+  {
+    name: "China – Guangzhou (Air Shipment)",
+    chineseName: "中国 – 广州（空运）",
+    phone:
+      "+8618826260042 (Liu An), +8618826260043 (Hellen), WhatsApp: +254 709 286 286",
+    chinesePhone: "+8618826260042 (刘安), +8618826260043 (Hellen)",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address:
+      "106, Building C, Zone C, Guangdong New Material Industry Base, Lishui Town, Nanhai District, Foshan City, POST CODE: 528244",
+    chineseAddress:
+      "佛山市南海区里水镇广东新材料产业基地C区C栋106 (上班时间周一至周日11点~19点）联系人:HELLEN+8618826260043 刘安 货物外箱每箱必须标注国外客户姓名电话号码以及空运，再附上装箱单发到仓库，如唛头信息不齐，仓库拒收",
+  },
+  {
+    name: "China – Guangzhou (Sea Shipment)",
+    chineseName: "中国 – 广州（海运）",
+    phone: "A WEI: +8618826260044, KEVIN: +8619927449452",
+    chinesePhone: "阿伟: +8618826260044, 小王: +8619927449452",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address:
+      "107, Building C, Zone C, Guangdong New Material Industry Base, Lishui Town, Nanhai District, Foshan City, POST CODE: 528244",
+    chineseAddress:
+      "ROLLING CARGO 107 (上班时间周一至周六11点~18点）联系人:阿伟 +8618826260044 小王：+8619927449452 货物外箱每箱必须标注国外客户姓名电话号码以及海运，再附上装箱单发到仓库，如唛头信息不齐，仓库拒收",
+  },
+  {
+    name: "U.K – London",
+    phone: "+44 7447 959259",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address: "Unit 3 Alpha Estate Clayton Road Hayes Middlesex, UB3 1BB",
+  },
+  {
+    name: "Turkey – Instanbul",
+    phone: "+905526128645",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address:
+      "Saraç İshak Mah. Turanlı Sok. No:12 Safir İ˛Merkezi D. 304-312. Beyazıt v.d 3710200842 Beyazıt / İSTANBUL / TÜRKİYE.",
+  },
+  {
+    name: "Europe – Netherlands",
+    phone: "+31 610624607",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address: "Zuid-Afrikaweg 12-K1432 DA Aalsmeer Netherlands",
+  },
+  {
+    name: "Europe – Italy",
+    phone: "+393716953158",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address: "Via Montorfano 98, 20831 Seregno (MB)",
+  },
+  {
+    name: "South Africa",
+    phone: "+27 79 906 7166",
+    email: "salesinquiries@rollingcargo.co.ke",
+    address: "ORBIT 22 Hugget street, Kempton Park 011 390 3555",
+  },
+];
+
+// Custom Clearence Page Data
+
+export const customClearanceContent: CustomClearanceContent = {
+  title: "Efficient customs Logistics.",
+  description: `In the global marketplace, rapidly changing production and delivery schedule requirements have increased the liability of customs brokers to provide expert clearance services. Rolling Cargo Ltd is widely recognized as one of Kenya’s premier customs brokers.
+
+Rolling Cargo has a longstanding professional relationship with government agencies and this hard-earned and privileged status offers a distinctive advantage when it comes to difficult negotiations of shipments and challenges posed by bureaucratic processes in Kenya.
+
+Regardless of how quickly a shipment arrives in Kenya, the complexity of customs procedures and documentation requirements can result in undefined delays that are costly to recipients. Rolling Cargo Customs Brokers are perfectly trained to understand the complex customs procedures of each line of business.
+
+Our customs brokerage team will be fully responsible for ensuring that the appropriate documentation is prepared well before all import and export deadlines so that costly and time-consuming delays are avoided. To further enhance this aspect of our business, Rolling Cargo Ltd maintains a bonded warehouse network across Kenya. These facilities, suitable for any type of cargo, can be reached by road, rail or air and ensure that shipments are cleared quickly upon arrival.
+import { FaHandshake, FaMoneyBillWave } from 'react-icons/fa';
+
+Our Customs Services include:
+Import / Export Customs Clearance Service
+Customs Evaluation of merchandise
+Import Duty & Tax Assessment
+Classification of goods
+Customs Surveying
+Import / Export Permissions of controlled goods
+Payment of Custom Duties on clients behalf
+Consultancy Services
+Transit Customs Handling`,
+};
+
+// FAQ Page Data
+
+export const faqData: FAQItem[] = [
+  {
+    question: "What shipping services do you offer?",
+    answer:
+      "We offer a range of services including standard ground shipping, express delivery, international shipping, and freight forwarding for larger cargo.",
+  },
+  {
+    question: "Which countries do you ship from?",
+    answer:
+      "We ship your goods by providing tailored end-to-end air freight, sea freight, and courier services from UK, Italy, Netherlands, Turkey, Dubai, and China. Rolling Cargo has a robust network of partners to serve your global needs.",
+  },
+  {
+    question: "What are your shipping rates and charges?",
+    answer:
+      "Charges are based on actual weight or volumetric weight of the package. We charge whichever is higher. Shipping by sea is based on Cubic per Meter (CBM). We measure using the formula Length x Width x Height (in meters).",
+  },
+  {
+    question: "Payments to suppliers",
+    answer:
+      "We assist our customers pay their suppliers abroad in Turkey. All you need to do is pay at our offices and we shall pay the supplier on your behalf.",
+  },
+  {
+    question: "What are the export charges?",
+    answer:
+      "Export charges are paid directly to the customs authorities. The kind of goods you are exporting will dictate the charges that will be applied. We find the correct tariff applicable based on the description of your goods. Be advised that tariffs are country-specific and can vary from one country to the other.",
+  },
+  {
+    question:
+      "What are your new working days in Dubai with the revised weekend?",
+    answer: "Our Dubai office is open everyday from 9AM – 10PM.",
+  },
+  {
+    question: "Do you ship from the USA?",
+    answer:
+      "Currently we don’t have an office in USA, and for this reason we are unable to ship.😔",
+  },
+  {
+    question: "How can I track my package?",
+    answer:
+      "You can track your package by entering your tracking number on our website or mobile app. We provide real-time updates on your shipment's location and estimated delivery time.",
+  },
+  {
+    question: "What are your delivery timeframes?",
+    answer:
+      "Our delivery timeframes vary depending on the service selected and destination. Standard domestic shipping typically takes 3-5 business days, while express services can deliver within 1-2 business days. International shipping times vary by country.",
+  },
+  {
+    question: "Do you offer insurance for valuable items?",
+    answer:
+      "Yes, we offer shipping insurance for valuable items. The cost is based on the declared value of your shipment. We recommend insurance for all high-value packages.",
+  },
+  {
+    question: "How do I schedule a pickup?",
+    answer:
+      "You can schedule a pickup through our website, mobile app, or by calling our customer service. We offer flexible pickup windows to accommodate your schedule.",
+  },
+];
+
+// Footer Data
+
+export const countries: Country[] = [
+  {
+    name: "Headquarters",
+    phone: "+254 709 286 286",
+    email: "salesinquiries@rollingcargo.co.ke",
+  },
+  {
+    name: "UAE - Dubai",
+    phone: "+971 4 2965 432",
+    email: "salesinquiries@rollingcargo.co.ke",
+  },
+  {
+    name: "China Office",
+    phone: "+8618826260042",
+    email: "salesinquiries@rollingcargo.co.ke",
+  },
+  {
+    name: "South Africa",
+    phone: "+27 79 906 7166",
+    email: "salesinquiries@rollingcargo.co.ke",
+  },
+  {
+    name: "Europe – Italy",
+    phone: "+393716953158",
+    email: "salesinquiries@rollingcargo.co.ke",
+  },
+  {
+    name: "Europe – Netherlands",
+    phone: "+31 610624607",
+    email: "salesinquiries@rollingcargo.co.ke",
+  },
+  {
+    name: "Turkey – Istanbul",
+    phone: "+905526128645",
+    email: "salesinquiries@rollingcargo.co.ke",
+  },
+  {
+    name: "U.K – London",
+    phone: "+44 7447 959259",
+    email: "salesinquiries@rollingcargo.co.ke",
+  },
+  {
+    name: "Mombasa Office",
+    phone: "+254 709 286 286",
+    email: "salesinquiries@rollingcargo.co.ke",
+  },
+];
+
+export const quickLinks = [
+  { name: "About Us", url: "/about-us" },
+  { name: "Air Cargo", url: "/air-cargo" },
+  { name: "Sea Cargo", url: "/sea-cargo" },
+  { name: "Online Shopping", url: "/online-shopping" },
+  { name: "Blog", url: "/blog" },
+  { name: "Privacy Policy", url: "/privacy" },
+];
+
+export const socialLinks = [
+  {
+    name: "Facebook",
+    icon: "Facebook",
+    url: "https://www.facebook.com/rollingcargo ",
+  },
+  {
+    name: "Twitter",
+    icon: "Twitter",
+    url: "https://twitter.com/rollingcargo ",
+  },
+  {
+    name: "LinkedIn",
+    icon: "Linkedin",
+    url: "https://www.linkedin.com/company/rollingcargo ",
+  },
+  {
+    name: "Instagram",
+    icon: "Instagram",
+    url: "https://www.instagram.com/rollingcargo ",
+  },
+];
+
+// Feright Section Data (Calculator)
+
+export const currencyMap: Record<CountryName, CurrencyInfo> = {
+  UK: { code: "GBP", symbol: "£", rate: 0.79 },
+  China: { code: "USD", symbol: "$", rate: 1 },
+  Turkey: { code: "USD", symbol: "$", rate: 1 },
+  Netherlands: { code: "USD", symbol: "$", rate: 1 },
+  Italy: { code: "USD", symbol: "$", rate: 1 },
+  "South Africa": { code: "USD", symbol: "$", rate: 1 },
+  Dubai: { code: "USD", symbol: "$", rate: 1 },
+};
+
+export const airFreightRates: Record<
+  CountryName,
+  { baseRate: number; minimumRate?: number }
+> = {
+  UK: { baseRate: 6.5 }, // GBP
+  China: { baseRate: 12, minimumRate: 15 }, // USD
+  Turkey: { baseRate: 7.5 }, // USD
+  Netherlands: { baseRate: 11 }, // USD
+  Italy: { baseRate: 11 }, // USD
+  "South Africa": { baseRate: 13 }, // USD
+  Dubai: { baseRate: 8, minimumRate: 10 }, // USD
+};
+
+export const handlingFees: Record<CountryName, { air: number; sea?: number }> =
+  {
+    UK: { air: 25, sea: 15 }, // GBP
+    China: { air: 0 },
+    Turkey: { air: 20, sea: 10 }, // USD
+    Netherlands: { air: 40, sea: 20 }, // USD
+    Italy: { air: 40 }, // USD
+    "South Africa": { air: 0 },
+    Dubai: { air: 0 },
+  };
+
+export const seaFreightRates: Partial<
+  Record<
+    CountryName,
+    number | { regular: number; small?: number; large?: number }
+  >
+> = {
+  UK: { regular: 2.5 }, // GBP per CBM
+  Dubai: { regular: 60000, small: 12000 }, // KES
+  China: { regular: 60000, small: 12000 }, // KES
+  Turkey: { regular: 750, large: 600 }, // USD
+  Netherlands: { regular: 5 }, // USD per CBM
+};
+
+export const airFreightCountries: CountryName[] = [
+  "UK",
+  "China",
+  "Turkey",
+  "Netherlands",
+  "Italy",
+  "South Africa",
+  "Dubai",
+];
+
+export const seaFreightCountries: CountryName[] = [
+  "UK",
+  "China",
+  "Turkey",
+  "Netherlands",
+  "Dubai",
+];
+
+// Solutions Data
+export const solutions: SolutionItem[] = [
+  {
+    icon: Handshake,
+    title: "Contact your supplier",
+    description:
+      "Liaise with your supplier, agree on the prices and items you wish to buy. Give the supplier our shipping address.",
+    link: "/about-us",
+  },
+  {
+    icon: Wallet,
+    title: "We pay on your behalf",
+    description:
+      "Send the funds to our Rolling Cargo Account, then we remit the payments on your behalf.",
+    link: "/about-us",
+  },
+  {
+    icon: Truck,
+    title: "Realtime Updates",
+    description:
+      "Once the package arrives at our warehouse, we will send you a message, keeping you posted on the tracking Info.",
+    link: "/air-cargo",
+  },
+];
+
+// Hero Data (Home page)
+export const CONFIG = {
+  EMAIL_JS: {
+    SERVICE_ID: "service_od2wm1x",
+    TEMPLATE_ID: "template_lws7abq",
+    PUBLIC_KEY: "AWuVmDvp3lqD8Xks_",
+  },
+  PHONE_NUMBER: "+254709 286 286",
+  IMAGE_TRANSITION_INTERVAL: 5000,
+  POPUP_DELAY: 1000,
+  SUCCESS_MESSAGE_DURATION: 2000,
+} as const;
+
+export const backgroundImages = [
+  {
+    src: "banner3.jpg",
+    alt: "Air and sea cargo services banner",
+    priority: true,
   },
 ];

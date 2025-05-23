@@ -1,15 +1,6 @@
 import React from "react";
 import ImageCard from "../ImageCard/ImageCard";
-import { GalleryItem } from "@/types/gallery.types";
-
-interface GalleryListProps {
-  items: GalleryItem[];
-  likedImages: Set<number>;
-  toggleLike: (id: number) => void;
-  handleShare: (item: GalleryItem) => void;
-  handleDownload: (item: GalleryItem) => void;
-  openLightbox: (item: GalleryItem, index: number) => void;
-}
+import { GalleryItem, GalleryListProps } from "@/types/gallery.types";
 
 const GalleryList: React.FC<GalleryListProps> = ({
   items,

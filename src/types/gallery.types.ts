@@ -27,3 +27,32 @@ interface ImageCardProps {
   handleDownload: () => void;
   openLightbox: (item: GalleryItem, index: number) => void;
 }
+
+export interface GalleryGridProps {
+  items: GalleryItem[];
+  likedImages: Set<number>;
+  toggleLike: (id: number) => void;
+  handleShare: (item: GalleryItem) => void;
+  handleDownload: (item: GalleryItem) => void;
+  openLightbox: (item: GalleryItem, index: number) => void;
+}
+
+export interface GalleryListProps {
+  items: GalleryItem[];
+  likedImages: Set<number>;
+  toggleLike: (id: number) => void;
+  handleShare: (item: GalleryItem) => void;
+  handleDownload: (item: GalleryItem) => void;
+  openLightbox: (item: GalleryItem, index: number) => void;
+}
+
+interface ImageCardPropsNew {
+  item: GalleryItem;
+  index: number;
+  layout?: "grid" | "list";
+  liked: boolean;
+  toggleLike: () => void;
+  handleShare: () => void;
+  handleDownload: () => void;
+  openLightbox: (item: GalleryItem, index: number) => void;
+}
