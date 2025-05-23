@@ -14,6 +14,7 @@ import { GalleryItem, Category } from "../types/gallery.types";
 import { AboutContent, AboutQuote } from "@/types/about.types";
 import { NotFoundContent } from "@/types/not-found.types";
 import { AirCargoContent } from "@/types/air-cargo-text.types";
+import { AppDownloadContent } from "@/types/app-download.types";
 
 // Gallery data
 
@@ -470,4 +471,20 @@ export const airCargoContent: AirCargoContent = {
   description: `Air freight transport is the most reliable and efficient way to get your goods worldwide from one location to another. Rolling Cargo delivers fast, safe and sound air freight solutions. We have extensive and well-established partnerships with different industry players. This enables us to offer better and most competitive rates. We deliver using the shortest possible transit time with optimum routings that are cost efficient.
 
 From the point of origin, to consolidation, customs clearance, all the way through to delivery to end customers, we’ve got your business and markets covered anywhere in the world. Through our secure cargo tracking service, customers are able to track their shipments and obtain real-time information regarding their freight anytime. We facilitate the handling, packing, customs, consolidation services and door-to-door deliveries.`,
+};
+
+// App download data
+
+export const appDownloadContent: AppDownloadContent = {
+  title: "Ship Smarter with Our Mobile App",
+  description:
+    "Track shipments, get real-time updates, and manage your deliveries on the go with our easy-to-use mobile app.",
+  features: [
+    "Real-time shipment tracking",
+    "Instant notifications",
+    "Easy booking and management",
+    "24/7 customer support",
+  ],
+  ctaText: "App Coming Soon",
+  ctaUrl: "https://play.google.com/store/apps/details?id=com.yourcompany.app ",
 };
