@@ -6,17 +6,10 @@ import AdminNavbar from "../shared/Components/admin/navbar/Navbar";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
-  pageTitle?: string;
-  pageSubtitle?: string;
-  activeMenuItem?: string;
+  params?: { [key: string]: string | string[] };
 }
 
-const AdminLayout: React.FC<AdminLayoutProps> = ({
-  children,
-  pageTitle,
-  pageSubtitle,
-  activeMenuItem = "dashboard",
-}) => {
+const AdminLayout: React.FC<AdminLayoutProps> = ({ children, params }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -60,7 +53,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({
       <AdminSidebar
         isOpen={sidebarOpen}
         setIsOpen={setSidebarOpen}
-        activeItem={activeMenuItem}
+        activeItem="dashboard" // You can derive this from pathname or params
         onItemClick={(itemId) => {
           // You can add navigation logic here
           console.log("Navigate to:", itemId);
@@ -72,8 +65,8 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({
         {/* Navbar */}
         <AdminNavbar
           onMenuClick={() => setSidebarOpen(true)}
-          title={pageTitle}
-          subtitle={pageSubtitle}
+          title="Admin Dashboard" // You can derive this from pathname or make it dynamic
+          subtitle="Manage your application"
         />
 
         {/* Page Content */}

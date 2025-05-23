@@ -34,3 +34,10 @@ interface SidebarProps {
   activeItem?: string;
   onItemClick?: (itemId: string) => void;
 }
+
+interface AdminLayoutProps {
+  children: React.ReactNode;
+  pageTitle?: string;
+  pageSubtitle?: string;
+  activeMenuItem?: string;
+}
