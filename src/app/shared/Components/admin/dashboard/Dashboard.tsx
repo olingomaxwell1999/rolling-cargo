@@ -44,9 +44,35 @@ import {
 import { StatCard } from "../statcarddata/Statcarddata";
 import { getStatusIcon } from "../statusicon/Statusicon";
 import { getStatusBadge } from "../statusbadge/Statusbadge";
-import { containerVariants, itemVariants } from "@/variants/animations";
-// Table components will be built inline since @/components/ui/table is not available
-// Select component will be built inline since @/components/ui/select is not available
+
+// Animation variants
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
 
 const DashboardPage: React.FC = () => {
   return (
