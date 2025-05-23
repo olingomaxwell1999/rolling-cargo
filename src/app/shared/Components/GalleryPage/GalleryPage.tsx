@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CATEGORIES, GALLERY_ITEMS } from "@/data/data";
 import SearchBar from "../SearchBar/SearchBar";
-import CategoryFilter from "../CategoryFilter/CategoryFilter";
+// import CategoryFilter from "../CategoryFilter/CategoryFilter";
 import GalleryGrid from "../GalleryGrid/GalleryGrid";
 import GalleryList from "../GalleryList/GalleryList";
 import Lightbox from "../Lightbox/Lightbox";
@@ -195,11 +195,11 @@ const GalleryPage: React.FC = () => {
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-            <CategoryFilter
+            {/* <CategoryFilter
               categories={CATEGORIES}
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
-            />
+            /> */}
 
             <div className="flex items-center gap-4">
               <select
