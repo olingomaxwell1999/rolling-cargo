@@ -1,3 +1,15 @@
+import {
+  BarChart3,
+  Calendar,
+  DollarSign,
+  FileText,
+  Home,
+  MapPin,
+  Package,
+  Settings,
+  Truck,
+  Users,
+} from "lucide-react";
 import { GalleryItem, Category } from "../types/gallery.types";
 
 export const GALLERY_ITEMS: GalleryItem[] = [
@@ -259,5 +271,146 @@ export const CATEGORIES: Category[] = [
     id: "protocols",
     name: "Protocols",
     count: GALLERY_ITEMS.filter((item) => item.category === "protocols").length,
+  },
+];
+
+// Data
+export const revenueData: RevenueData[] = [
+  { month: "Jan", revenue: 45000, shipments: 120 },
+  { month: "Feb", revenue: 52000, shipments: 135 },
+  { month: "Mar", revenue: 48000, shipments: 128 },
+  { month: "Apr", revenue: 61000, shipments: 165 },
+  { month: "May", revenue: 55000, shipments: 142 },
+  { month: "Jun", revenue: 67000, shipments: 178 },
+];
+
+export const shipmentStatusData: ShipmentStatusData[] = [
+  { name: "Delivered", value: 342, color: "hsl(142, 76%, 36%)" },
+  { name: "In Transit", value: 125, color: "hsl(221, 83%, 53%)" },
+  { name: "Pending", value: 43, color: "hsl(48, 96%, 53%)" },
+  { name: "Delayed", value: 18, color: "hsl(0, 84%, 60%)" },
+];
+
+export const recentShipments: RecentShipment[] = [
+  {
+    id: "RC001",
+    client: "Safaricom Ltd",
+    route: "Nairobi → Mombasa",
+    status: "delivered",
+    amount: 15000,
+  },
+  {
+    id: "RC002",
+    client: "KCB Bank",
+    route: "Mombasa → Kisumu",
+    status: "transit",
+    amount: 22000,
+  },
+  {
+    id: "RC003",
+    client: "Equity Bank",
+    route: "Nairobi → Eldoret",
+    status: "pending",
+    amount: 18500,
+  },
+  {
+    id: "RC004",
+    client: "East African Breweries",
+    route: "Mombasa → Nairobi",
+    status: "delivered",
+    amount: 31000,
+  },
+];
+
+export const stats: StatCardData[] = [
+  {
+    title: "Total Revenue",
+    value: "KSh 2.8M",
+    change: "+12.5%",
+    changeType: "positive",
+    icon: DollarSign,
+    color: "bg-gradient-to-r from-green-500 to-green-600",
+  },
+  {
+    title: "Active Shipments",
+    value: "168",
+    change: "+8.2%",
+    changeType: "positive",
+    icon: Package,
+    color: "bg-gradient-to-r from-blue-500 to-blue-600",
+  },
+  {
+    title: "Fleet Utilization",
+    value: "94%",
+    change: "+5.1%",
+    changeType: "positive",
+    icon: Truck,
+    color: "bg-gradient-to-r from-purple-500 to-purple-600",
+  },
+  {
+    title: "Active Clients",
+    value: "342",
+    change: "+18.7%",
+    changeType: "positive",
+    icon: Users,
+    color: "bg-gradient-to-r from-orange-500 to-orange-600",
+  },
+];
+
+export const menuItems = [
+  { id: "dashboard", label: "Dashboard", icon: Home, href: "/admin" },
+  {
+    id: "shipments",
+    label: "Shipments",
+    icon: Package,
+    href: "/admin/shipments",
+  },
+  {
+    id: "fleet",
+    label: "Fleet Management",
+    icon: Truck,
+    href: "/admin/fleet",
+  },
+  { id: "clients", label: "Clients", icon: Users, href: "/admin/clients" },
+  { id: "routes", label: "Routes", icon: MapPin, href: "/admin/routes" },
+  { id: "reports", label: "Reports", icon: FileText, href: "/admin/reports" },
+  {
+    id: "schedule",
+    label: "Schedule",
+    icon: Calendar,
+    href: "/admin/schedule",
+  },
+  {
+    id: "analytics",
+    label: "Analytics",
+    icon: BarChart3,
+    href: "/admin/analytics",
+  },
+  {
+    id: "settings",
+    label: "Settings",
+    icon: Settings,
+    href: "/admin/settings",
+  },
+];
+
+export const notifications = [
+  {
+    id: 1,
+    message: "New shipment RC005 has been created",
+    time: "2 minutes ago",
+    unread: true,
+  },
+  {
+    id: 2,
+    message: "Fleet vehicle KCA 123A maintenance due",
+    time: "1 hour ago",
+    unread: true,
+  },
+  {
+    id: 3,
+    message: "Payment received from Safaricom Ltd",
+    time: "3 hours ago",
+    unread: false,
   },
 ];

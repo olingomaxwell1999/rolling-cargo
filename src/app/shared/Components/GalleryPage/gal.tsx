@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CATEGORIES, GALLERY_ITEMS } from "@/data/data";
 import SearchBar from "../SearchBar/SearchBar";
-// import CategoryFilter from "../CategoryFilter/CategoryFilter";
+import CategoryFilter from "../CategoryFilter/CategoryFilter";
 import GalleryGrid from "../GalleryGrid/GalleryGrid";
 import GalleryList from "../GalleryList/GalleryList";
 import Lightbox from "../Lightbox/Lightbox";
@@ -17,7 +17,7 @@ const containerVariants = {
   },
 };
 
-const GalleryPage: React.FC = () => {
+const Galler: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -193,6 +193,79 @@ const GalleryPage: React.FC = () => {
           className="mb-12 space-y-8"
         >
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <CategoryFilter
+              categories={CATEGORIES}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+
+            <div className="flex items-center gap-4">
+              <select
+                value={sortBy}
+                onChange={(e) =>
+                  setSortBy(
+                    e.target.value as "date" | "views" | "likes" | "title"
+                  )
+                }
+                className="px-4 py-3 border-2 border-gray-200/50 rounded-xl bg-white/70 backdrop-blur-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 shadow-lg transition-all duration-300"
+              >
+                <option value="date">Sort by Date</option>
+                {/* <option value="likes">Sort by Likes</option> */}
+                <option value="likes">Sort by Likes</option>
+                <option value="title">Sort by Title</option>
+              </select>
+              <div className="flex border-2 border-gray-200/50 rounded-xl bg-white/70 backdrop-blur-sm overflow-hidden shadow-lg">
+                <button
+                  onClick={() => setViewMode("grid")}
+                  className={`p-3 ${
+                    viewMode === "grid"
+                      ? "bg-blue-600 text-white"
+                      : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <rect x="3" y="3" width="7" height="7" />
+                    <rect x="14" y="3" width="7" height="7" />
+                    <rect x="3" y="14" width="7" height="7" />
+                    <rect x="14" y="14" width="7" height="7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`p-3 ${
+                    viewMode === "list"
+                      ? "bg-blue-600 text-white"
+                      : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <line x1="8" y1="6" x2="21" y2="6" />
+                    <line x1="8" y1="12" x2="21" y2="12" />
+                    <line x1="8" y1="18" x2="21" y2="18" />
+                    <line x1="3" y1="6" x2="3.01" y2="6" />
+                    <line x1="3" y1="12" x2="3.01" y2="12" />
+                    <line x1="3" y1="18" x2="3.01" y2="18" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Results Count */}
@@ -301,4 +374,4 @@ const GalleryPage: React.FC = () => {
   );
 };
 
-export default GalleryPage;
+export default Galler;
