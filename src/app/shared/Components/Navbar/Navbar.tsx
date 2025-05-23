@@ -383,7 +383,7 @@ const Navbar: React.FC = () => {
                 onClick={toggleMenu}
                 className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={isMenuOpen ? true : false}
+                aria-expanded={isMenuOpen}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
