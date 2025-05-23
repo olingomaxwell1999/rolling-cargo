@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { GalleryItem, Category } from "../types/gallery.types";
 import { AboutContent, AboutQuote } from "@/types/about.types";
+import { NotFoundContent } from "@/types/not-found.types";
 
 // Gallery data
 
@@ -449,4 +450,14 @@ export const aboutContent: AboutContent = {
   title: "Your Shipping Partner",
   description:
     "Rolling Cargo is an established international air and sea freight forwarder with over 15 successful years of trusted and verified expertise... [keep rest of your long paragraph here]",
+};
+
+// Not Found page data
+
+export const notFoundContent: NotFoundContent = {
+  heading: "404",
+  subheading: "Page Not Found",
+  description:
+    "Oops! The page you are looking for does not exist or has been moved.",
+  ctaText: "Return to Home",
 };
