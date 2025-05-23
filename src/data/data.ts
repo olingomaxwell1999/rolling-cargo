@@ -11,6 +11,9 @@ import {
   Users,
 } from "lucide-react";
 import { GalleryItem, Category } from "../types/gallery.types";
+import { AboutContent, AboutQuote } from "@/types/about.types";
+
+// Gallery data
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
@@ -183,6 +186,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
 ];
 
+// Categories data(Gallery)
+
 export const CATEGORIES: Category[] = [
   {
     id: "all",
@@ -274,7 +279,8 @@ export const CATEGORIES: Category[] = [
   },
 ];
 
-// Data
+// Dashboard data
+
 export const revenueData: RevenueData[] = [
   { month: "Jan", revenue: 45000, shipments: 120 },
   { month: "Feb", revenue: 52000, shipments: 135 },
@@ -284,12 +290,16 @@ export const revenueData: RevenueData[] = [
   { month: "Jun", revenue: 67000, shipments: 178 },
 ];
 
+// Shipment status data
+
 export const shipmentStatusData: ShipmentStatusData[] = [
   { name: "Delivered", value: 342, color: "hsl(142, 76%, 36%)" },
   { name: "In Transit", value: 125, color: "hsl(221, 83%, 53%)" },
   { name: "Pending", value: 43, color: "hsl(48, 96%, 53%)" },
   { name: "Delayed", value: 18, color: "hsl(0, 84%, 60%)" },
 ];
+
+// Recent shipments data
 
 export const recentShipments: RecentShipment[] = [
   {
@@ -365,6 +375,8 @@ export const stats: StatCardData[] = [
   },
 ];
 
+// Sidebar menu items
+
 export const menuItems = [
   { id: "dashboard", label: "Dashboard", icon: Home, href: "/admin" },
   {
@@ -402,6 +414,8 @@ export const menuItems = [
   },
 ];
 
+// Notifications data
+
 export const notifications = [
   {
     id: 1,
@@ -422,3 +436,17 @@ export const notifications = [
     unread: false,
   },
 ];
+
+//About Us data
+export const aboutQuote: AboutQuote = {
+  quoteText:
+    "Our commitment to excellence in shipping sets us apart. We do not just deliver packages; we deliver peace of mind.",
+  authorName: "Mohammed Abdi",
+  authorTitle: "Executive Chairman and Founder.",
+};
+
+export const aboutContent: AboutContent = {
+  title: "Your Shipping Partner",
+  description:
+    "Rolling Cargo is an established international air and sea freight forwarder with over 15 successful years of trusted and verified expertise... [keep rest of your long paragraph here]",
+};
