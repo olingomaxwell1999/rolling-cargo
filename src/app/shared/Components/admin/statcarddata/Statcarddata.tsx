@@ -1,5 +1,6 @@
 // Components
 import { Card, CardContent } from "@/components/ui/card";
+import { itemVariants } from "@/variants/animations";
 import { motion } from "framer-motion";
 import { TrendingUp } from "lucide-react";
 export const StatCard: React.FC<StatCardData> = ({
