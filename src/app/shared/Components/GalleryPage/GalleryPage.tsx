@@ -172,7 +172,7 @@ const GalleryPage: React.FC = () => {
   }, [isLightboxOpen, currentImageIndex, isSlideshow, navigateImage]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <div className="min-h-screen bg-gradient-to-br pt-10 from-slate-50 via-white to-blue-50/30">
       {/* Hero Header */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
