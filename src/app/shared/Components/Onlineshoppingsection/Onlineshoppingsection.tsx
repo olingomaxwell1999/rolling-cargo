@@ -29,7 +29,7 @@ const Onlineshoppingsection = () => {
           <Image
             fill
             priority
-            src="RC Jan-59.jpg"
+            src="RC Jan-101.jpg"
             alt="Strategic locations worldwide"
             className="absolute inset-0 w-full h-full object-cover rounded-lg shadow-lg"
           />
@@ -40,7 +40,7 @@ const Onlineshoppingsection = () => {
       <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden md:block">
         <div className="relative h-full w-full">
           <Image
-            src="RC Jan-59.jpg"
+            src="RC Jan-101.jpg"
             fill
             priority
             alt="Strategic locations worldwide"
