@@ -9,6 +9,7 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
+import Image from "next/image";
 
 const countries = [
   {
@@ -162,7 +163,7 @@ const Footer = () => {
                 <Instagram size={24} />
               </Link>
             </div>
-            <img src="/aeo.png" alt="Social Media" className="w-40 h-20" />
+            <Image src="/aeo.png" alt="Social Media" className="w-40 h-20" />
           </div>
         </div>
       </div>

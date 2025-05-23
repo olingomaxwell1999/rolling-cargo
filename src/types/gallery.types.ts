@@ -1,13 +1,13 @@
+// src/types/gallery.types.ts
 export interface GalleryItem {
   id: number;
   title: string;
   description: string;
+  image: string;
   category: string;
   tags: string[];
-  image: string;
   date: string;
   views: number;
-  likes: number;
 }
 
 export interface Category {
