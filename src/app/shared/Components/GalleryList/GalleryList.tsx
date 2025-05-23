@@ -1,6 +1,6 @@
-import { GalleryItem } from "@/types/gallery.types";
 import React from "react";
 import ImageCard from "../ImageCard/ImageCard";
+import { GalleryItem } from "@/types/gallery.types";
 
 interface GalleryListProps {
   items: GalleryItem[];

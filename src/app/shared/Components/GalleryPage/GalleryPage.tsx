@@ -2,12 +2,12 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CATEGORIES, GALLERY_ITEMS } from "@/data/data";
-import { GalleryItem } from "@/types/gallery.types";
 import SearchBar from "../SearchBar/SearchBar";
 import CategoryFilter from "../CategoryFilter/CategoryFilter";
 import GalleryGrid from "../GalleryGrid/GalleryGrid";
 import GalleryList from "../GalleryList/GalleryList";
 import Lightbox from "../Lightbox/Lightbox";
+import { GalleryItem } from "@/types/gallery.types";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -52,7 +52,8 @@ const GalleryPage: React.FC = () => {
         case "views":
           return b.views - a.views;
         case "likes":
-          return b.likes - a.likes;
+          // 'likes' property does not exist on GalleryItem, fallback to date
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
         case "title":
           return a.title.localeCompare(b.title);
         default:
@@ -211,7 +212,7 @@ const GalleryPage: React.FC = () => {
                 className="px-4 py-3 border-2 border-gray-200/50 rounded-xl bg-white/70 backdrop-blur-sm focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 shadow-lg transition-all duration-300"
               >
                 <option value="date">Sort by Date</option>
-                <option value="views">Sort by Views</option>
+                {/* <option value="likes">Sort by Likes</option> */}
                 <option value="likes">Sort by Likes</option>
                 <option value="title">Sort by Title</option>
               </select>

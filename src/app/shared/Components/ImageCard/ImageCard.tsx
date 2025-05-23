@@ -1,10 +1,6 @@
+import { GalleryItem } from "@/types/gallery.types";
 import Image from "next/image";
 import React from "react";
-
-interface GalleryItem {
-  image: string;
-  category: string;
-}
 
 interface ImageCardProps {
   item: GalleryItem;
