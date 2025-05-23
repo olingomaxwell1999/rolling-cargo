@@ -9,7 +9,7 @@ export interface GalleryItem {
   date: string;
   views: number;
   likes: number;
-  comments: number;
+  comments?: number;
 }
 export interface Category {
   id: string;
