@@ -1,130 +1,417 @@
 "use client";
-
-import React from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Search, X } from "lucide-react";
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+  Menu,
+  X,
+  DollarSign,
+  Bell,
+  Mail,
+  Search,
+  Camera,
+  Building2,
+  HelpCircle,
+  FileText,
+  Truck,
+  Plane,
+  Ship,
+  Package,
+  Phone,
+  User,
+  Shield,
+  Briefcase,
+  MessageSquare,
+  Star,
+} from "lucide-react";
 
-// Navigation Links
+// Configuration
+const BREAKPOINTS = {
+  MOBILE: 768,
+  TABLET: 1024,
+} as const;
+
+// Navigation data
 const NAVIGATION_LINKS = {
   services: [
-    { name: "About Us", href: "/about-us" },
-    { name: "Our Services", href: "/our-services" },
-    { name: "Air Cargo", href: "/air-cargo" },
-    { name: "Sea Cargo", href: "/sea-cargo" },
-    { name: "Online Shopping", href: "/online-shopping" },
+    { name: "About Us", href: "/about-us", icon: Building2 },
+    { name: "Our Services", href: "/our-services", icon: Truck },
+    { name: "Air Cargo", href: "/air-cargo", icon: Plane },
+    { name: "Sea Cargo", href: "/sea-cargo", icon: Ship },
+    { name: "Online Shopping", href: "/online-shopping", icon: Package },
+    { name: "Custom Clearance", href: "/custom-clearance", icon: Shield },
+    { name: "Gallery", href: "/gallery", icon: Camera },
+    { name: "FAQ", href: "/faq", icon: HelpCircle },
   ],
   quickLinks: [
-    { name: "Track Shipment", href: "/tracking" },
-    { name: "Cost Estimator", href: "/cost-estimator" },
-    { name: "Gallery", href: "/gallery" },
+    { name: "Track Shipment", href: "/tracking", icon: Search },
+    { name: "Cost Estimator", href: "/cost-estimator", icon: DollarSign },
+    { name: "Updates", href: "/blog", icon: Bell },
+    { name: "Gallery", href: "/gallery", icon: Camera },
   ],
+  company: [
+    { name: "Careers", href: "/careers", icon: Briefcase },
+    { name: "Blog", href: "/blog", icon: FileText },
+    { name: "Feedback", href: "/feedback", icon: MessageSquare },
+    { name: "FAQ", href: "/faq", icon: HelpCircle },
+    { name: "Contact Us", href: "/contact-us", icon: Phone },
+    { name: "Terms & Conditions", href: "/terms-conditions", icon: FileText },
+    { name: "Privacy Policy", href: "/privacy-policy", icon: Shield },
+  ],
+} as const;
+
+// Types
+interface NavLinkProps {
+  href: string;
+  className?: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+  ariaLabel?: string;
+}
+
+interface IconNavLinkProps {
+  href: string;
+  icon: React.ComponentType<{ size?: string | number; className?: string }>;
+  label: string;
+  isMobile?: boolean;
+  onClick?: () => void;
+}
+
+interface MenuSectionProps {
+  title: string;
+  links: readonly {
+    name: string;
+    href: string;
+    icon: React.ComponentType<{ size?: string | number; className?: string }>;
+  }[];
+  onLinkClick: () => void;
+}
+
+// Custom hooks
+const useMediaQuery = (query: string): boolean => {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    setMatches(mediaQuery.matches);
+    const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, [query]);
+  return matches;
 };
 
-export default function Navbar() {
-  const [isMobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+const useClickOutside = (handler: () => void) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        handler();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [handler]);
+  return ref;
+};
+
+const useKeyboardNavigation = (isMenuOpen: boolean, closeMenu: () => void) => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isMenuOpen) {
+        closeMenu();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen, closeMenu]);
+};
+
+// Components
+const NavLink: React.FC<NavLinkProps> = ({
+  href,
+  className = "",
+  children,
+  onClick,
+  ariaLabel,
+}) => (
+  <Link
+    href={href}
+    className={`transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded ${className}`}
+    onClick={onClick}
+    aria-label={ariaLabel}
+  >
+    {children}
+  </Link>
+);
+
+const IconNavLink: React.FC<IconNavLinkProps> = ({
+  href,
+  icon: Icon,
+  label,
+  isMobile = false,
+  onClick,
+}) => (
+  <NavLink
+    href={href}
+    className="text-gray-600 hover:text-gray-900 flex flex-col items-center p-2 rounded-lg hover:bg-gray-50"
+    onClick={onClick}
+    ariaLabel={label}
+  >
+    <Icon size={isMobile ? 18 : 24} className="mb-1" />
+    <span className="text-[10px] md:text-xs font-medium leading-tight text-center">
+      {label}
+    </span>
+  </NavLink>
+);
+
+const MenuSection: React.FC<MenuSectionProps> = ({
+  title,
+  links,
+  onLinkClick,
+}) => (
+  <div>
+    <h3 className="text-lg font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">
+      {title}
+    </h3>
+    <ul className="space-y-3">
+      {links.map((link) => (
+        <li key={link.name}>
+          <NavLink
+            href={link.href}
+            className="text-gray-600 hover:text-gray-900 flex items-center p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+            onClick={onLinkClick}
+            ariaLabel={`Navigate to ${link.name}`}
+          >
+            <link.icon size={18} className="mr-3 text-gray-500" />
+            {link.name}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const LogoSection: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
+  const [logoError, setLogoError] = useState(false);
+  const handleLogoError = useCallback(() => {
+    setLogoError(true);
+  }, []);
+  return (
+    <NavLink
+      href="/"
+      className="flex items-center justify-center group"
+      ariaLabel="Go to homepage"
+    >
+      {!logoError ? (
+        <div className="relative">
+          <Image
+            src="/logo.png"
+            alt="Company Logo"
+            width={isMobile ? 45 : 70}
+            height={isMobile ? 45 : 70}
+            className="object-contain transition-transform duration-200 group-hover:scale-105"
+            onError={handleLogoError}
+            priority
+          />
+        </div>
+      ) : (
+        <div
+          className={`${
+            isMobile ? "text-lg" : "text-2xl"
+          } font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200`}
+        >
+          Logo
+        </div>
+      )}
+      <div className="ml-2 hidden sm:flex flex-col">
+        <span className="text-xs text-gray-500 font-medium">Since 2007</span>
+        <div className="flex items-center">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={10} className="text-yellow-400 fill-current" />
+          ))}
+          <span className="text-xs text-gray-400 ml-1">Trusted</span>
+        </div>
+      </div>
+    </NavLink>
+  );
+};
+
+const MobileMenu: React.FC<{
+  isOpen: boolean;
+  onClose: () => void;
+  menuRef: React.RefObject<HTMLDivElement>;
+}> = ({ isOpen, onClose, menuRef }) => {
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   return (
-    <nav className="bg-white shadow fixed top-0 left-0 right-0 z-40 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          {/* Mobile Menu Trigger */}
-          <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={isMobileMenuOpen}
-              >
-                {isMobileMenuOpen ? <X /> : <Menu />}
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] sm:w-[400px] p-0">
-              {/* Mobile Menu Content */}
-              <div className="flex flex-col h-full p-6 space-y-4">
-                <h2 className="text-xl font-semibold">Navigation</h2>
-                <ul className="space-y-2">
-                  {NAVIGATION_LINKS.services.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="block py-2 text-sm text-gray-700 hover:text-blue-600"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <ul className="space-y-2 mt-4">
-                  {NAVIGATION_LINKS.quickLinks.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="block py-2 text-sm text-gray-700 hover:text-blue-600"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </SheetContent>
-          </Sheet>
-
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="Company Logo"
-                width={50}
-                height={50}
-              />
-              <span className="ml-2 text-lg font-bold hidden sm:inline">
-                Logo
-              </span>
-            </Link>
-          </div>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-6">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <Link href="/about-us" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      About Us
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/tracking" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      Track Shipment <Search className="ml-2" size={16} />
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+    <div
+      ref={menuRef}
+      className={`fixed inset-0 z-50 bg-white overflow-y-auto transition-transform duration-300 ease-in-out transform ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mobile-menu-title"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <h2
+            id="mobile-menu-title"
+            className="text-xl font-semibold text-gray-900"
+          >
+            Navigation Menu
+          </h2>
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-label="Close navigation menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+        {/* Menu Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <MenuSection
+            title="Services"
+            links={NAVIGATION_LINKS.services}
+            onLinkClick={onClose}
+          />
+          <MenuSection
+            title="Quick Links"
+            links={NAVIGATION_LINKS.quickLinks}
+            onLinkClick={onClose}
+          />
+          <MenuSection
+            title="Company"
+            links={NAVIGATION_LINKS.company}
+            onLinkClick={onClose}
+          />
+        </div>
+        {/* Featured Image */}
+        <div className="w-full max-w-md mx-auto">
+          <div className="relative overflow-hidden rounded-xl shadow-lg">
+            <Image
+              src="/aeo.jpg"
+              alt="AEO Certified - Authorized Economic Operator"
+              width={400}
+              height={200}
+              className="object-cover w-full h-48 transition-transform duration-300 hover:scale-105"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            <div className="absolute bottom-4 left-4 text-white">
+              <p className="text-sm font-medium">AEO Certified</p>
+              <p className="text-xs opacity-90">Trusted logistics partner</p>
+            </div>
           </div>
         </div>
       </div>
-    </nav>
+    </div>
   );
-}
+};
+
+const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useMediaQuery(`(max-width: ${BREAKPOINTS.MOBILE - 1}px)`);
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((prev) => !prev);
+  }, []);
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+  const menuRef = useClickOutside(closeMenu);
+  useKeyboardNavigation(isMenuOpen, closeMenu);
+
+  // Memoized navigation items for better performance
+  const rightNavItems = useMemo(
+    () => [
+      { href: "/cost-estimator", icon: DollarSign, label: "Cost Estimator" },
+      { href: "/blog", icon: Bell, label: "Updates" },
+      { href: "/contact-us", icon: Mail, label: "Contact" },
+      { href: "/gallery", icon: Camera, label: "Gallery" },
+    ],
+    []
+  );
+
+  return (
+    <>
+      <nav
+        className="bg-white shadow-lg fixed top-0 left-0 right-0 z-40 border-b border-gray-200"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Left Section */}
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={toggleMenu}
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen ? "true" : "false"} // ✅ Fixed ARIA attribute
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+              <NavLink
+                href="/tracking"
+                className="bg-gradient-to-r from-[#0f1031] to-[#1a1548] hover:from-[#1a1548] hover:to-[#2a2558] text-white px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 font-medium"
+                ariaLabel="Track your shipment"
+              >
+                <Search size={isMobile ? 16 : 18} />
+                <span className="hidden sm:inline">Track Shipment</span>
+                <span className="sm:hidden">Track</span>
+              </NavLink>
+            </div>
+            {/* Center Section - Logo */}
+            <div className="flex-1 flex justify-center">
+              <LogoSection isMobile={isMobile} />
+            </div>
+            {/* Right Section */}
+            <div className="flex items-center space-x-1 md:space-x-2">
+              {rightNavItems.map((item) => (
+                <IconNavLink
+                  key={item.href}
+                  href={item.href}
+                  icon={item.icon}
+                  label={item.label}
+                  isMobile={isMobile}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+      {/* Mobile Menu */}
+      <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} menuRef={menuRef} />
+      {/* Backdrop */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-25 z-30 transition-opacity duration-300"
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
+      )}
+    </>
+  );
+};
+
+export default Navbar;
