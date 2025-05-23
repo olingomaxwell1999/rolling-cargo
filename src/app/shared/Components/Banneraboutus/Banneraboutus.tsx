@@ -1,44 +1,52 @@
-// components/Banner.tsx
+"use client";
+
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { aboutUsBannerContent } from "@/data/data";
 
-const Banneraboutus = () => {
+const BannerAboutUs: React.FC = () => {
   return (
-    <div className="relative mt-16 w-full h-64 md:h-80 lg:h-96">
+    <div className="relative mt-16 w-full h-[20rem] md:h-[28rem] lg:h-[32rem] overflow-hidden">
+      {/* Background Image */}
       <Image
         src="/About Us Page.jpg"
         alt="Background"
-        layout="fill"
-        objectFit="cover"
+        fill
+        sizes="100vw"
+        quality={85}
         priority
+        className="object-cover"
       />
-      <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-          About Us
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white px-4 text-center">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+          {aboutUsBannerContent.title}
         </h1>
-        <nav>
-          <ul className="flex space-x-4">
-            <li>
+
+        {/* Breadcrumbs */}
+        <nav
+          aria-label="Breadcrumb"
+          className="flex items-center space-x-2 text-sm md:text-base"
+        >
+          {aboutUsBannerContent.breadcrumbs.map((crumb, index) => (
+            <React.Fragment key={crumb.href}>
               <Link
-                href="/"
-                className="text-white hover:text-gray-300 transition-colors"
+                href={crumb.href}
+                className="hover:underline hover:text-gray-300 transition-colors duration-200"
               >
-                Homepage
+                {crumb.label}
               </Link>
-            </li>
-            <li>
-              <Link
-                href="/about-us"
-                className="text-white hover:text-gray-300 transition-colors"
-              >
-                About Us
-              </Link>
-            </li>
-          </ul>
+              {index < aboutUsBannerContent.breadcrumbs.length - 1 && (
+                <span aria-hidden="true">/</span>
+              )}
+            </React.Fragment>
+          ))}
         </nav>
       </div>
     </div>
   );
 };
 
-export default Banneraboutus;
+export default BannerAboutUs;

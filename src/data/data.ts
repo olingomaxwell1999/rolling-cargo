@@ -15,6 +15,7 @@ import { AboutContent, AboutQuote } from "@/types/about.types";
 import { NotFoundContent } from "@/types/not-found.types";
 import { AirCargoContent } from "@/types/air-cargo-text.types";
 import { AppDownloadContent } from "@/types/app-download.types";
+import { BannerContent } from "@/types/banner.types";
 
 // Gallery data
 
@@ -487,4 +488,20 @@ export const appDownloadContent: AppDownloadContent = {
   ],
   ctaText: "App Coming Soon",
   ctaUrl: "https://play.google.com/store/apps/details?id=com.yourcompany.app ",
+};
+
+// Banner data(About Us)
+
+export const aboutUsBannerContent: BannerContent = {
+  title: "About Us",
+  breadcrumbs: [
+    {
+      label: "Homepage",
+      href: "/",
+    },
+    {
+      label: "About Us",
+      href: "/about-us",
+    },
+  ],
 };
