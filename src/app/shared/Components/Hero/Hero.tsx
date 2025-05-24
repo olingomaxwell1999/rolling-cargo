@@ -67,20 +67,43 @@ export default function Hero() {
       <div className="hidden md:block absolute -bottom-24 left-0 right-0 z-20">
         <div className="max-w-5xl mx-auto px-4">
           <Card className="overflow-hidden shadow-xl">
-            <CardContent className="p-0 grid grid-cols-3">
-              <Link href="/tracking" className="hover:bg-primary p-6">
-                <Package />
-                <h3>Track Shipment</h3>
-                <p>Real-time tracking system</p>
-              </Link>
-              <Button
-                variant="default"
-                onClick={() => setShowContactForm(true)}
+            <CardContent className="p-0 grid grid-cols-3 divide-x">
+              {/* Track Shipment */}
+              <Link
+                href="/tracking"
+                className="flex flex-col items-center justify-center p-6 text-center"
               >
-                <Mail />
-                Request Quote
+                <Package className="mb-2" />
+                <h3 className="font-semibold mb-1">Track Shipment</h3>
+                <p className="text-sm text-muted-foreground">
+                  Real-time tracking system
+                </p>
+              </Link>
+
+              {/* Request Quote */}
+              <Button
+                variant="outline"
+                onClick={() => setShowContactForm(true)}
+                className="flex flex-col items-center justify-center p-6 text-center focus:outline-none"
+              >
+                <Mail className="mb-2" />
+                <h3 className="font-semibold mb-1">Request Quote</h3>
+                <p className="text-sm text-muted-foreground">
+                  Get a customized quote
+                </p>
               </Button>
-              <Link href="/contact-us">Request Quote</Link>
+
+              {/* Contact Us */}
+              <Link
+                href="/contact-us"
+                className="flex flex-col items-center justify-center p-6 text-center"
+              >
+                <Plane className="mb-2" />
+                <h3 className="font-semibold mb-1">Contact Us</h3>
+                <p className="text-sm text-muted-foreground">
+                  Reach out for support
+                </p>
+              </Link>
             </CardContent>
           </Card>
         </div>
