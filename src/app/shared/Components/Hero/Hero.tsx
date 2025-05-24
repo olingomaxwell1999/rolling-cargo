@@ -20,6 +20,7 @@ export default function Hero() {
   const currentImageIndex = useImageRotation(backgroundImages.length);
   const { showPopup } = usePopup();
   const currentImage = backgroundImages[currentImageIndex];
+  const [alertOpen, setAlertOpen] = useState(false);
 
   const {
     formData,
@@ -89,7 +90,9 @@ export default function Hero() {
       {showContactForm && (
         <ContactForm onClose={() => setShowContactForm(false)} />
       )}
-      {showPopup && <CustomAlert onClose={() => {}} />}
+      {showPopup && (
+        <CustomAlert open={alertOpen} onOpenChange={setAlertOpen} />
+      )}
     </motion.div>
   );
 }

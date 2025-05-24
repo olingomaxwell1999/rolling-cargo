@@ -9,12 +9,16 @@ import {
 import { Button } from "@/components/ui/button";
 
 interface CustomAlertProps {
-  onClose: () => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
-export const CustomAlert: React.FC<CustomAlertProps> = ({ onClose }) => {
+export const CustomAlert: React.FC<CustomAlertProps> = ({
+  open,
+  onOpenChange,
+}) => {
   return (
-    <AlertDialog open onOpenChange={onClose}>
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>ANNOUNCEMENT!</AlertDialogTitle>
@@ -22,7 +26,7 @@ export const CustomAlert: React.FC<CustomAlertProps> = ({ onClose }) => {
         <AlertDialogDescription>
           We're excited to announce our new service updates...
         </AlertDialogDescription>
-        <Button onClick={onClose}>Close</Button>
+        <Button onClick={() => onOpenChange(false)}>Close</Button>
       </AlertDialogContent>
     </AlertDialog>
   );
