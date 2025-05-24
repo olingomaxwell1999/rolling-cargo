@@ -1,12 +1,23 @@
 import {
   BarChart3,
+  Bell,
+  Briefcase,
+  Building2,
   Calendar,
+  Camera,
   DollarSign,
   FileText,
+  HelpCircle,
   Home,
   MapPin,
+  MessageSquare,
   Package,
+  Phone,
+  Plane,
+  Search,
   Settings,
+  Shield,
+  Ship,
   Truck,
   Users,
 } from "lucide-react";
@@ -26,6 +37,41 @@ import { CountryName, CurrencyInfo } from "@/types/feright.types";
 import { SolutionItem } from "@/types/solution.types";
 import { Handshake, Wallet } from "lucide-react";
 
+// Configuration
+export const BREAKPOINTS = {
+  MOBILE: 768,
+  TABLET: 1024,
+} as const;
+
+// Navigation data
+export const NAVIGATION_LINKS = {
+  services: [
+    { name: "About Us", href: "/about-us", icon: Building2 },
+    { name: "Our Services", href: "/our-services", icon: Truck },
+    { name: "Air Cargo", href: "/air-cargo", icon: Plane },
+    { name: "Sea Cargo", href: "/sea-cargo", icon: Ship },
+    { name: "Online Shopping", href: "/online-shopping", icon: Package },
+    { name: "Custom Clearance", href: "/custom-clearance", icon: Shield },
+    { name: "Gallery", href: "/gallery", icon: Camera },
+    { name: "FAQ", href: "/faq", icon: HelpCircle },
+  ],
+  quickLinks: [
+    { name: "Track Shipment", href: "/tracking", icon: Search },
+    { name: "Cost Estimator", href: "/cost-estimator", icon: DollarSign },
+    { name: "Updates", href: "/blog", icon: Bell },
+    { name: "Gallery", href: "/gallery", icon: Camera },
+  ],
+  company: [
+    { name: "Careers", href: "/careers", icon: Briefcase },
+    { name: "Blog", href: "/blog", icon: FileText },
+    { name: "Feedback", href: "/feedback", icon: MessageSquare },
+    { name: "FAQ", href: "/faq", icon: HelpCircle },
+    { name: "Contact Us", href: "/contact-us", icon: Phone },
+    { name: "Terms & Conditions", href: "/terms-conditions", icon: FileText },
+    { name: "Privacy Policy", href: "/privacy-policy", icon: Shield },
+  ],
+} as const;
+
 // Gallery data
 
 export const GALLERY_ITEMS: GalleryItem[] = [
@@ -36,7 +82,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
       "Modern air freight handling at international airport with state-of-the-art equipment and efficient logistics management systems.",
     category: "air-cargo",
     tags: ["logistics", "aviation", "cargo"],
-    image: "RC Jan-18.jpg",
+    image: "RC Jan-14.jpg",
     date: "2024-01-15",
     views: 1247,
     likes: 89,
@@ -48,7 +94,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
       "Massive container ship being loaded at port with state-of-the-art equipment and efficient logistics management systems.",
     category: "sea-cargo",
     tags: ["shipping", "containers", "port"],
-    image: "RC Jan-37.jpg",
+    image: "RC Jan-13.jpg",
     date: "2024-01-20",
     views: 892,
     likes: 67,
@@ -60,7 +106,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
       "State-of-the-art warehouse management system with efficient storage and automation.",
     category: "warehouse",
     tags: ["storage", "automation", "efficiency"],
-    image: "RC Jan-40.jpg",
+    image: "RC Jan-21.jpg",
     date: "2024-01-25",
     views: 654,
     likes: 45,
@@ -72,7 +118,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
       "Advanced logistics management system with real-time tracking and efficient routing.",
     category: "logistics",
     tags: ["tracking", "routing", "efficiency"],
-    image: "RC Jan-53.jpg",
+    image: "RC Jan-17.jpg",
     date: "2024-02-01",
     views: 321,
     likes: 23,
@@ -84,7 +130,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
       "State-of-the-art aviation safety systems and protocols in action.",
     category: "aviation",
     tags: ["safety", "protocols", "aviation"],
-    image: "RC Jan-57.jpg",
+    image: "RC Jan-83.jpg",
     date: "2024-02-05",
     views: 456,
     likes: 34,
@@ -96,7 +142,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
       "Worldwide logistics network visualization with real-time tracking and efficient routing.",
     category: "network",
     tags: ["global", "connectivity", "routes"],
-    image: "RC Jan-59.jpg",
+    image: "RC Jan-69.jpg",
     date: "2024-02-10",
     views: 1345,
     likes: 112,
@@ -108,94 +154,10 @@ export const GALLERY_ITEMS: GalleryItem[] = [
       "Advanced routing optimization algorithms for efficient route planning.",
     category: "routing",
     tags: ["optimization", "routing", "efficiency"],
-    image: "RC Jan-62.jpg",
+    image: "RC Jan-71.jpg",
     date: "2024-02-15",
     views: 765,
     likes: 56,
-  },
-  {
-    id: 8,
-    title: "Safety Protocols",
-    description:
-      "State-of-the-art safety protocols for aviation and maritime operations.",
-    category: "protocols",
-    tags: ["safety", "protocols", "aviation"],
-    image: "RC Jan-65.jpg",
-    date: "2024-02-20",
-    views: 987,
-    likes: 78,
-  },
-  {
-    id: 9,
-    title: "Cargo Handling",
-    description:
-      "Efficient cargo handling operations at a modern port with advanced equipment.",
-    category: "cargo",
-    tags: ["cargo", "port", "logistics"],
-    image: "RC Jan-69.jpg",
-    date: "2024-02-25",
-    views: 543,
-    likes: 39,
-  },
-  {
-    id: 10,
-    title: "Shipping Logistics",
-    description:
-      "Advanced shipping logistics management with real-time tracking and efficient routing.",
-    category: "shipping",
-    tags: ["shipping", "logistics", "tracking"],
-    image: "RC Jan-72.jpg",
-    date: "2024-03-01",
-    views: 876,
-    likes: 67,
-  },
-  {
-    id: 11,
-    title: "Container Storage",
-    description:
-      "Efficient container storage solutions at a modern port with advanced equipment.",
-    category: "containers",
-    tags: ["containers", "storage", "port"],
-    image: "RC Jan-86.jpg",
-    date: "2024-03-05",
-    views: 654,
-    likes: 45,
-  },
-  {
-    id: 12,
-    title: "Port Operations",
-    description:
-      "State-of-the-art port operations with efficient cargo handling and logistics management.",
-    category: "port",
-    tags: ["port", "logistics", "cargo"],
-    image: "RC Jan-96.jpg",
-    date: "2024-03-10",
-    views: 321,
-    likes: 23,
-  },
-  {
-    id: 13,
-    title: "Storage Solutions",
-    description:
-      "Advanced storage solutions for efficient cargo handling and logistics management.",
-    category: "storage",
-    tags: ["storage", "logistics", "cargo"],
-    image: "RC Jan-101.jpg",
-    date: "2024-03-15",
-    views: 456,
-    likes: 34,
-  },
-  {
-    id: 14,
-    title: "Automation in Logistics",
-    description:
-      "State-of-the-art automation solutions for efficient logistics management.",
-    category: "automation",
-    tags: ["automation", "logistics", "efficiency"],
-    image: "RC Jan-113.jpg",
-    date: "2024-03-20",
-    views: 1345,
-    likes: 112,
   },
 ];
 

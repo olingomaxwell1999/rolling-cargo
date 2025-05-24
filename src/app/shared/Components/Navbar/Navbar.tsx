@@ -24,87 +24,18 @@ import {
   Ship,
   Package,
   Phone,
-  User,
   Shield,
   Briefcase,
   MessageSquare,
-  Star,
 } from "lucide-react";
-
-// Configuration
-const BREAKPOINTS = {
-  MOBILE: 768,
-  TABLET: 1024,
-} as const;
-
-// Navigation data
-const NAVIGATION_LINKS = {
-  services: [
-    { name: "About Us", href: "/about-us", icon: Building2 },
-    { name: "Our Services", href: "/our-services", icon: Truck },
-    { name: "Air Cargo", href: "/air-cargo", icon: Plane },
-    { name: "Sea Cargo", href: "/sea-cargo", icon: Ship },
-    { name: "Online Shopping", href: "/online-shopping", icon: Package },
-    { name: "Custom Clearance", href: "/custom-clearance", icon: Shield },
-    { name: "Gallery", href: "/gallery", icon: Camera },
-    { name: "FAQ", href: "/faq", icon: HelpCircle },
-  ],
-  quickLinks: [
-    { name: "Track Shipment", href: "/tracking", icon: Search },
-    { name: "Cost Estimator", href: "/cost-estimator", icon: DollarSign },
-    { name: "Updates", href: "/blog", icon: Bell },
-    { name: "Gallery", href: "/gallery", icon: Camera },
-  ],
-  company: [
-    { name: "Careers", href: "/careers", icon: Briefcase },
-    { name: "Blog", href: "/blog", icon: FileText },
-    { name: "Feedback", href: "/feedback", icon: MessageSquare },
-    { name: "FAQ", href: "/faq", icon: HelpCircle },
-    { name: "Contact Us", href: "/contact-us", icon: Phone },
-    { name: "Terms & Conditions", href: "/terms-conditions", icon: FileText },
-    { name: "Privacy Policy", href: "/privacy-policy", icon: Shield },
-  ],
-} as const;
-
-// Types
-interface NavLinkProps {
-  href: string;
-  className?: string;
-  children: React.ReactNode;
-  onClick?: () => void;
-  ariaLabel?: string;
-}
-
-interface IconNavLinkProps {
-  href: string;
-  icon: React.ComponentType<{ size?: string | number; className?: string }>;
-  label: string;
-  isMobile?: boolean;
-  onClick?: () => void;
-}
-
-interface MenuSectionProps {
-  title: string;
-  links: readonly {
-    name: string;
-    href: string;
-    icon: React.ComponentType<{ size?: string | number; className?: string }>;
-  }[];
-  onLinkClick: () => void;
-}
-
-// Custom hooks
-const useMediaQuery = (query: string): boolean => {
-  const [matches, setMatches] = useState(false);
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(query);
-    setMatches(mediaQuery.matches);
-    const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, [query]);
-  return matches;
-};
+import {
+  IconNavLinkProps,
+  MenuSectionProps,
+  NavLinkProps,
+} from "@/types/navbar.types";
+import { BREAKPOINTS, NAVIGATION_LINKS } from "@/data/data";
+import { useMediaQuery } from "@/hooks/useMediaQueries";
+import { Button } from "@/components/ui/button";
 
 const useClickOutside = (handler: () => void) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -229,15 +160,6 @@ const LogoSection: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
           Logo
         </div>
       )}
-      <div className="ml-2 hidden sm:flex flex-col">
-        <span className="text-xs text-gray-500 font-medium">Since 2007</span>
-        <div className="flex items-center">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} size={10} className="text-yellow-400 fill-current" />
-          ))}
-          <span className="text-xs text-gray-400 ml-1">Trusted</span>
-        </div>
-      </div>
     </NavLink>
   );
 };
@@ -363,14 +285,14 @@ const Navbar: React.FC = () => {
           <div className="flex justify-between items-center h-16">
             {/* Left Section */}
             <div className="flex items-center space-x-3">
-              <button
+              <Button
                 onClick={toggleMenu}
                 className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMenuOpen ? "true" : "false"} // ✅ Fixed ARIA attribute
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
+              </Button>
               <NavLink
                 href="/tracking"
                 className="bg-gradient-to-r from-[#0f1031] to-[#1a1548] hover:from-[#1a1548] hover:to-[#2a2558] text-white px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 font-medium"
