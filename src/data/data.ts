@@ -579,7 +579,13 @@ export const aboutQuote: AboutQuote = {
 export const aboutContent: AboutContent = {
   title: "Your Shipping Partner",
   description:
-    "Rolling Cargo is an established international air and sea freight forwarder with over 15 successful years of trusted and verified expertise... [keep rest of your long paragraph here]",
+    "Rolling Cargo is an established international air and sea freight forwarder with over 15 successful years of trusted and verified expertise. With the backing of 200 experienced and professionally trained staff and excellent relationships with carriers, customs, terminals, and other local authorities, we will be your best choice on the extension of your business." +
+    "\n\nWe offer a wide range of air and sea freight services to Kenya, with a primary focus on reliability and communication that our customers can depend upon. In a world where air freight services are a vital link to today’s global logistics market, efficiency and versatility are paramount." +
+    "\n\nWith our international connections and hundreds of flights leaving daily, we have the unique ability to rapidly and reliably manage the fast flow of your products or goods via import or export. Whether you are shipping B2B or B2C, rest assured your consignments will be handled with the utmost care and attention." +
+    "\n\nChoose Rolling Cargo and allow our experts to eliminate the pain and effort of dealing with external carriers, customs clearance, compliance, and any separately required paperwork, ensuring high quality throughout the supply chain." +
+    "\n\nAs one of the leading freight forwarders, you can always rely on Rolling Cargo’s first-class shipping services at very competitive rates to ensure the most efficient connection of your shipments by air or sea from the UK, China, Turkey, Netherlands, India, and Dubai to Kenya and beyond." +
+    "\n\nMake the most of our International Courier License for smaller items such as parcels, packages, and cartons. For more urgent consignments, air freight is an excellent option. Our rates are reasonable, especially in comparison to airline excess luggage prices!" +
+    "\n\nAir freight is competitive for medium-size cargo if you can be flexible on delivery and cut-off times. Want to keep your freight costs to a minimum? Please contact our friendly Contact Center +254 709 286 286 to see how we can assist with your logistical requirements.",
 };
 
 // Not Found page data
