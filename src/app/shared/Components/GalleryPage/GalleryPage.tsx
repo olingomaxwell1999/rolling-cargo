@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CATEGORIES, GALLERY_ITEMS } from "@/data/data";
-import SearchBar from "../SearchBar/SearchBar";
+// import SearchBar from "../SearchBar/SearchBar";
 import GalleryGrid from "../GalleryGrid/GalleryGrid";
 import GalleryList from "../GalleryList/GalleryList";
 import Lightbox from "../Lightbox/Lightbox";
@@ -185,14 +185,14 @@ const GalleryPage: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Search & Filters */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-12 space-y-8"
         >
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        </motion.div>
+        </motion.div> */}
 
         {/* Results Count */}
         <motion.div
