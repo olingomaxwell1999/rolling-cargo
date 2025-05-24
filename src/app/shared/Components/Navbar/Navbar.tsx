@@ -145,7 +145,7 @@ const LogoSection: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
             src="/logo.png"
             alt="Company Logo"
             width={isMobile ? 45 : 200}
-            height={isMobile ? 45 : 150}
+            height={isMobile ? 45 : 130}
             className="object-contain transition-transform duration-200 group-hover:scale-105"
             onError={handleLogoError}
             priority
