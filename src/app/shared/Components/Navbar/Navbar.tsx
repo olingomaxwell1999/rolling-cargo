@@ -37,7 +37,6 @@ import { BREAKPOINTS, NAVIGATION_LINKS } from "@/data/data";
 import { useMediaQuery } from "@/hooks/useMediaQueries";
 import { Button } from "@/components/ui/button";
 
-// Custom hooks
 const useClickOutside = (handler: () => void) => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -129,13 +128,11 @@ const MenuSection: React.FC<MenuSectionProps> = ({
   </div>
 );
 
-// ✅ LogoSection - Centered and Responsive
 const LogoSection: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
   const [logoError, setLogoError] = useState(false);
   const handleLogoError = useCallback(() => {
     setLogoError(true);
   }, []);
-
   return (
     <NavLink
       href="/"
@@ -143,11 +140,12 @@ const LogoSection: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
       ariaLabel="Go to homepage"
     >
       {!logoError ? (
-        <div className="relative w-full max-w-[200px] aspect-auto">
+        <div className="relative">
           <Image
             src="/logo.png"
             alt="Company Logo"
-            fill
+            width={isMobile ? 45 : 200}
+            height={isMobile ? 45 : 150}
             className="object-contain transition-transform duration-200 group-hover:scale-105"
             onError={handleLogoError}
             priority
@@ -166,7 +164,6 @@ const LogoSection: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
   );
 };
 
-// ✅ Mobile Menu Component
 const MobileMenu: React.FC<{
   isOpen: boolean;
   onClose: () => void;
@@ -254,7 +251,6 @@ const MobileMenu: React.FC<{
   );
 };
 
-// ✅ Main Navbar Component
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useMediaQuery(`(max-width: ${BREAKPOINTS.MOBILE - 1}px)`);
@@ -288,7 +284,7 @@ const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Left Section */}
-            <div className="flex items-center space-x-3 md:space-x-6">
+            <div className="flex-[1] flex items-center space-x-3">
               <Button
                 onClick={toggleMenu}
                 className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg transition-colors duration-200"
@@ -309,12 +305,12 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* Center Section - Logo */}
-            <div className="flex-1 flex justify-center min-w-0">
+            <div className="flex-[2] flex justify-center">
               <LogoSection isMobile={isMobile} />
             </div>
 
             {/* Right Section */}
-            <div className="flex items-center space-x-1 md:space-x-2">
+            <div className="flex-[1] flex items-center justify-end space-x-1 md:space-x-2">
               {rightNavItems.map((item) => (
                 <IconNavLink
                   key={item.href}
