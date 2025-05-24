@@ -55,8 +55,13 @@ export default function Hero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <Plane size={32} />
-          <Ship size={32} className="ml-4" />
+          {/* Side-by-side Icons */}
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <Plane size={48} className="text-white" />
+            <Ship size={48} className="text-white" />
+          </div>
+
+          {/* Heading */}
           <h1 className="text-2xl md:text-4xl font-bold drop-shadow-lg max-w-3xl mx-auto my-6">
             Air and Sea Cargo Experts
           </h1>

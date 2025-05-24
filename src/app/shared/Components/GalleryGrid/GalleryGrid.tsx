@@ -18,9 +18,6 @@ const GalleryGrid: React.FC<GalleryGridProps> = ({
           item={item}
           index={index}
           liked={likedImages.has(item.id)}
-          toggleLike={() => toggleLike(item.id)}
-          handleShare={() => handleShare(item)}
-          handleDownload={() => handleDownload(item)}
           openLightbox={openLightbox}
         />
       ))}

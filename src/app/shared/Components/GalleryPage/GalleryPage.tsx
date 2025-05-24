@@ -195,7 +195,7 @@ const GalleryPage: React.FC = () => {
         </motion.div> */}
 
         {/* Results Count */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -209,7 +209,7 @@ const GalleryPage: React.FC = () => {
             of <span className="font-semibold">{GALLERY_ITEMS.length}</span>{" "}
             images
           </p>
-        </motion.div>
+        </motion.div> */}
 
         {/* Gallery View */}
         <AnimatePresence mode="wait">

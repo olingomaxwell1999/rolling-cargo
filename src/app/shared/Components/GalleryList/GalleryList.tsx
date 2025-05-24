@@ -19,9 +19,6 @@ const GalleryList: React.FC<GalleryListProps> = ({
           index={index}
           layout="list"
           liked={likedImages.has(item.id)}
-          toggleLike={() => toggleLike(item.id)}
-          handleShare={() => handleShare(item)}
-          handleDownload={() => handleDownload(item)}
           openLightbox={openLightbox}
         />
       ))}
