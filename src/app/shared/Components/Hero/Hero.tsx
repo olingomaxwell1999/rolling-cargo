@@ -62,47 +62,41 @@ export default function Hero() {
           </h1>
         </motion.div>
       </div>
-
       {/* Services Box - Desktop only */}
       <div className="hidden md:block absolute -bottom-24 left-0 right-0 z-20">
         <div className="max-w-5xl mx-auto px-4">
-          <Card className="overflow-hidden shadow-xl">
-            <CardContent className="p-0 grid grid-cols-3 divide-x">
+          <Card className="overflow-hidden shadow-xl border-none">
+            <CardContent className="p-0 grid grid-cols-3 divide-x divide-gray-300">
               {/* Track Shipment */}
               <Link
                 href="/tracking"
-                className="flex flex-col items-center justify-center p-6 text-center"
+                className="flex flex-col items-center justify-center p-6 text-center bg-[#0f1031] text-white transition-none"
               >
-                <Package className="mb-2" />
+                <Package className="mb-2 w-6 h-6" />
                 <h3 className="font-semibold mb-1">Track Shipment</h3>
-                <p className="text-sm text-muted-foreground">
-                  Real-time tracking system
-                </p>
+                <p className="text-sm opacity-80">Real-time tracking system</p>
               </Link>
 
               {/* Request Quote */}
-              <Button
-                variant="outline"
+              <button
                 onClick={() => setShowContactForm(true)}
-                className="flex flex-col items-center justify-center p-6 text-center focus:outline-none"
+                className="flex flex-col items-center justify-center p-6 text-center focus:outline-none hover:bg-transparent"
               >
-                <Mail className="mb-2" />
+                <Mail className="mb-2 w-6 h-6 text-primary" />
                 <h3 className="font-semibold mb-1">Request Quote</h3>
                 <p className="text-sm text-muted-foreground">
                   Get a customized quote
                 </p>
-              </Button>
+              </button>
 
               {/* Contact Us */}
               <Link
                 href="/contact-us"
-                className="flex flex-col items-center justify-center p-6 text-center"
+                className="flex flex-col items-center justify-center p-6 text-center bg-[#0f1031] text-white transition-none"
               >
-                <Plane className="mb-2" />
+                <Plane className="mb-2 w-6 h-6" />
                 <h3 className="font-semibold mb-1">Contact Us</h3>
-                <p className="text-sm text-muted-foreground">
-                  Reach out for support
-                </p>
+                <p className="text-sm opacity-80">Reach out for support</p>
               </Link>
             </CardContent>
           </Card>

@@ -73,7 +73,7 @@ const NavLink: React.FC<NavLinkProps> = ({
 }) => (
   <Link
     href={href}
-    className={`transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded ${className}`}
+    className={`transition-colors duration-200 ${className}`}
     onClick={onClick}
     aria-label={ariaLabel}
   >
@@ -202,7 +202,7 @@ const MobileMenu: React.FC<{
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-gray-500 hover:text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
             aria-label="Close navigation menu"
           >
             <X size={24} />
@@ -287,7 +287,7 @@ const Navbar: React.FC = () => {
             <div className="flex items-center space-x-3">
               <Button
                 onClick={toggleMenu}
-                className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg transition-colors duration-200"
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMenuOpen ? "true" : "false"} // ✅ Fixed ARIA attribute
               >
