@@ -1,12 +1,10 @@
+// src/components/FreightTypeSelector.tsx
+
 "use client";
 
-import { FreightType } from "@/types/feright.types";
 import React from "react";
-
-interface FreightTypeSelectorProps {
-  selectedType: FreightType | null;
-  onSelect: (type: FreightType) => void;
-}
+import { FreightType } from "@/types/feright.types";
+import { FreightTypeSelectorProps } from "@/types/feright.types";
 
 const FreightTypeSelector: React.FC<FreightTypeSelectorProps> = ({
   selectedType,

@@ -33,7 +33,6 @@ import { Office } from "@/types/contact.types";
 import { CustomClearanceContent } from "@/types/customs.types";
 import { FAQItem } from "@/types/faq.types";
 import { Country } from "@/types/footer.types";
-import { CountryName, CurrencyInfo } from "@/types/feright.types";
 import { SolutionItem } from "@/types/solution.types";
 import { Handshake, Wallet } from "lucide-react";
 
@@ -1349,6 +1348,23 @@ export const socialLinks = [
 
 // Feright Section Data (Calculator)
 
+// src/data/data.ts
+
+export type CountryName =
+  | "UK"
+  | "China"
+  | "Turkey"
+  | "Netherlands"
+  | "Italy"
+  | "South Africa"
+  | "Dubai";
+
+export interface CurrencyInfo {
+  code: string;
+  symbol: string;
+  rate: number; // Conversion to USD if needed
+}
+
 export const currencyMap: Record<CountryName, CurrencyInfo> = {
   UK: { code: "GBP", symbol: "£", rate: 0.79 },
   China: { code: "USD", symbol: "$", rate: 1 },
@@ -1363,37 +1379,34 @@ export const airFreightRates: Record<
   CountryName,
   { baseRate: number; minimumRate?: number }
 > = {
-  UK: { baseRate: 6.5 }, // GBP
-  China: { baseRate: 12, minimumRate: 15 }, // USD
-  Turkey: { baseRate: 7.5 }, // USD
-  Netherlands: { baseRate: 11 }, // USD
-  Italy: { baseRate: 11 }, // USD
-  "South Africa": { baseRate: 13 }, // USD
-  Dubai: { baseRate: 8, minimumRate: 10 }, // USD
+  UK: { baseRate: 6.49 }, // no min specified
+  China: { baseRate: 12, minimumRate: 15 },
+  Turkey: { baseRate: 7.5 },
+  Netherlands: { baseRate: 11 },
+  Italy: { baseRate: 11 },
+  "South Africa": { baseRate: 13 },
+  Dubai: { baseRate: 8, minimumRate: 10 },
 };
 
 export const handlingFees: Record<CountryName, { air: number; sea?: number }> =
   {
-    UK: { air: 25, sea: 15 }, // GBP
+    UK: { air: 25, sea: 15 },
     China: { air: 0 },
-    Turkey: { air: 20, sea: 10 }, // USD
-    Netherlands: { air: 40, sea: 20 }, // USD
-    Italy: { air: 40 }, // USD
+    Turkey: { air: 0, sea: 10 },
+    Netherlands: { air: 40, sea: 20 },
+    Italy: { air: 40 },
     "South Africa": { air: 0 },
     Dubai: { air: 0 },
   };
 
 export const seaFreightRates: Partial<
-  Record<
-    CountryName,
-    number | { regular: number; small?: number; large?: number }
-  >
+  Record<CountryName, number | { regular: number; small?: number }>
 > = {
-  UK: { regular: 2.5 }, // GBP per CBM
-  Dubai: { regular: 60000, small: 12000 }, // KES
-  China: { regular: 60000, small: 12000 }, // KES
-  Turkey: { regular: 750, large: 600 }, // USD
-  Netherlands: { regular: 5 }, // USD per CBM
+  UK: { regular: 5 },
+  Dubai: { regular: 60000, small: 12000 },
+  China: { regular: 60000, small: 12000 },
+  Turkey: { regular: 750 },
+  Netherlands: { regular: 10 },
 };
 
 export const airFreightCountries: CountryName[] = [

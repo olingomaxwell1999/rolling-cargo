@@ -1,6 +1,7 @@
-// src/types/freightTypes.ts
+// src/types/feright.types.ts
 
 export type FreightType = "air" | "sea";
+
 export type CountryName =
   | "UK"
   | "China"
@@ -16,17 +17,35 @@ export interface CurrencyInfo {
   rate: number;
 }
 
-export interface FormData {
+export interface FreightFormData {
+  weight?: string;
+  length?: string;
+  width?: string;
+  height?: string;
+  cbm?: string;
+  name?: string;
+  phone?: string;
+  email?: string;
+}
+
+export interface FreightFormProps {
+  formData: FreightFormData;
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  handleSubmit: (e: React.FormEvent) => void;
+  errors: Record<string, string>;
   freightType: FreightType | null;
-  country: CountryName | null;
-  weight: string;
-  length: string;
-  width: string;
-  height: string;
-  cbm: string;
-  name: string;
-  phone: string;
-  email: string;
+  selectedCountry: CountryName | null;
+  volumetricWeight: number | null;
+}
+
+export interface CalculationResultsProps {
+  freightType: FreightType;
+  country: CountryName;
+  freightCost: number;
+  handlingFee: number;
+  totalCost: number;
 }
 
 export interface CountrySelectorProps {
@@ -34,20 +53,7 @@ export interface CountrySelectorProps {
   selectedCountry: CountryName | null;
   onSelect: (country: CountryName) => void;
 }
-
-export interface CalculationResultsProps {
-  cost: string;
-  handlingFee: string;
-  totalCost: string;
-  freightType: string | null;
-  country: CountryName | null;
-}
-
-export interface FreightFormProps {
-  formData: any;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: React.FormEvent) => void;
-  errors: Record<string, string>;
-  freightType: string | null;
-  volumetricWeight: number | null;
+export interface FreightTypeSelectorProps {
+  selectedType: FreightType | null;
+  onSelect: (type: FreightType) => void;
 }
