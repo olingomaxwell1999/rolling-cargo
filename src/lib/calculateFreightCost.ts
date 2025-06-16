@@ -1,7 +1,7 @@
 // src/lib/calculateFreightCost.ts
 
 import { airFreightRates, seaFreightRates, handlingFees } from "@/data/data";
-import { CountryName } from "@/types/feright.types";
+import { CountryName, SeaFreightRate } from "@/types/feright.types";
 
 type FreightType = "air" | "sea";
 
@@ -38,16 +38,19 @@ export function calculateFreightCost(
   }
 
   if (type === "sea") {
-    const rateData = seaFreightRates[country];
+    const rateData = seaFreightRates[country] as SeaFreightRate;
     if (!rateData) throw new Error(`No sea rate found for ${country}`);
 
     if (typeof rateData === "number") {
       // Simple per CBM rate
       freightCost = (cbm || 0) * rateData;
     } else {
-      const { regular, small } = rateData;
+      const { regular, small, large } = rateData;
+
       if (small && cbm && cbm <= 0.2) {
         freightCost = small;
+      } else if (large && cbm && cbm > 10) {
+        freightCost = large;
       } else {
         freightCost = (cbm || 0) * regular;
       }

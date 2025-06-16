@@ -1,3 +1,5 @@
+// src/components/FreightForm.tsx
+
 "use client";
 
 import React from "react";
@@ -13,11 +15,12 @@ const FreightForm: React.FC<FreightFormProps> = ({
   handleSubmit,
   errors,
   freightType,
+  selectedCountry,
   volumetricWeight,
 }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Weight & Dimensions */}
+      {/* Air Freight Fields */}
       {freightType === "air" && (
         <>
           <div>
@@ -31,6 +34,7 @@ const FreightForm: React.FC<FreightFormProps> = ({
               <p className="text-red-500 text-sm">{errors.weight}</p>
             )}
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <Label htmlFor="length">Length (cm)</Label>
@@ -66,6 +70,7 @@ const FreightForm: React.FC<FreightFormProps> = ({
               )}
             </div>
           </div>
+
           {volumetricWeight !== null && (
             <div>
               <Label>Volumetric Weight (kg)</Label>
@@ -75,7 +80,7 @@ const FreightForm: React.FC<FreightFormProps> = ({
         </>
       )}
 
-      {/* CBM for Sea */}
+      {/* Sea Freight Field */}
       {freightType === "sea" && (
         <div>
           <Label htmlFor="cbm">CBM (Cubic Meters)</Label>

@@ -1359,6 +1359,10 @@ export type CountryName =
   | "South Africa"
   | "Dubai";
 
+export type SeaFreightRate =
+  | number
+  | { regular: number; small?: number; large?: number };
+
 export interface CurrencyInfo {
   code: string;
   symbol: string;
@@ -1399,13 +1403,11 @@ export const handlingFees: Record<CountryName, { air: number; sea?: number }> =
     Dubai: { air: 0 },
   };
 
-export const seaFreightRates: Partial<
-  Record<CountryName, number | { regular: number; small?: number }>
-> = {
+export const seaFreightRates: Partial<Record<CountryName, SeaFreightRate>> = {
   UK: { regular: 5 },
   Dubai: { regular: 60000, small: 12000 },
   China: { regular: 60000, small: 12000 },
-  Turkey: { regular: 750 },
+  Turkey: { regular: 750, large: 600 },
   Netherlands: { regular: 10 },
 };
 

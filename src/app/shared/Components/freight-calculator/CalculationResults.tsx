@@ -5,11 +5,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { getCurrencySymbol } from "@/lib/utils";
-import { CountryName } from "@/types/feright.types";
 
 interface Props {
   freightType: "air" | "sea";
-  country: CountryName;
+  country: string;
   freightCost: number;
   handlingFee: number;
   totalCost: number;
@@ -22,7 +21,7 @@ const CalculationResults: React.FC<Props> = ({
   handlingFee,
   totalCost,
 }) => {
-  const symbol = getCurrencySymbol(country, freightType);
+  const symbol = getCurrencySymbol(country as any, freightType);
 
   return (
     <motion.div

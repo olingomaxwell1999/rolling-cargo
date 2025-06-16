@@ -17,6 +17,11 @@ export interface CurrencyInfo {
   rate: number;
 }
 
+// Sea Freight Rate Type — allows flat rate or object with optional small/large
+export type SeaFreightRate =
+  | number
+  | { regular: number; small?: number; large?: number };
+
 export interface FreightFormData {
   weight?: string;
   length?: string;
@@ -53,6 +58,7 @@ export interface CountrySelectorProps {
   selectedCountry: CountryName | null;
   onSelect: (country: CountryName) => void;
 }
+
 export interface FreightTypeSelectorProps {
   selectedType: FreightType | null;
   onSelect: (type: FreightType) => void;
