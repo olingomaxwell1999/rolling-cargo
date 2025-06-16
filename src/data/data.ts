@@ -1190,7 +1190,6 @@ Rolling Cargo has a longstanding professional relationship with government agenc
 Regardless of how quickly a shipment arrives in Kenya, the complexity of customs procedures and documentation requirements can result in undefined delays that are costly to recipients. Rolling Cargo Customs Brokers are perfectly trained to understand the complex customs procedures of each line of business.
 
 Our customs brokerage team will be fully responsible for ensuring that the appropriate documentation is prepared well before all import and export deadlines so that costly and time-consuming delays are avoided. To further enhance this aspect of our business, Rolling Cargo Ltd maintains a bonded warehouse network across Kenya. These facilities, suitable for any type of cargo, can be reached by road, rail or air and ensure that shipments are cleared quickly upon arrival.
-import { FaHandshake, FaMoneyBillWave } from 'react-icons/fa';
 
 Our Customs Services include:
 Import / Export Customs Clearance Service
