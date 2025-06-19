@@ -839,8 +839,6 @@ export const availableJobs: Job[] = [
   },
 ];
 
-//Blogs Content
-
 export const blogPosts: BlogPost[] = [
   {
     id: 1,
@@ -935,7 +933,7 @@ export const blogPosts: BlogPost[] = [
     ],
     category: "Shipping News",
     image:
-      "big-ben-westminster-bridge-on-river-thames-in-lon-2023-11-27-05-36-07-utc.jpg",
+      "big-ben-westminster-bridge-on-river-thames-in-lon-2023-11-27-05-36-08-utc.jpg",
     author: "Rolling Cargo",
   },
   {
@@ -1095,6 +1093,177 @@ export const blogPosts: BlogPost[] = [
     category: "Shipping News",
     image:
       "Blog 6 Cargo Shipping Solutions from Dubai to Kenya Rolling Cargo Delivers Excellence.jpg",
+    author: "Rolling Cargo",
+  },
+  {
+    id: 9,
+    title: "How to Shop on Amazon South Africa and Ship with Rolling Cargo",
+    excerpt:
+      "Shop effortlessly from Amazon South Africa and get your items delivered to Kenya with Rolling Cargo.",
+    sections: [
+      {
+        title: "Overview",
+        content: [
+          "Looking to buy from Amazon South Africa and get your items delivered to Kenya? Rolling Cargo makes the process smooth, affordable, and efficient.",
+        ],
+      },
+      {
+        title: "Step 1: Shop on Amazon South Africa",
+        content: [
+          "Go to Amazon.co.za or any other trusted South African e-commerce store. Shop as you normally would and proceed to checkout.",
+        ],
+      },
+      {
+        title: "Step 2: Use Our South Africa Delivery Address",
+        content: [
+          "At checkout, fill in the shipping address exactly as shown below:",
+          "Name: Your Full Name C/O Orbit Import and Export",
+          "Street Name: 22 Huggett Street",
+          "Suburb: Kempton Park",
+          "City: Johannesburg",
+          "Province: Gauteng",
+          "Postal Code: 1619",
+          "Phone Number: +27 11 390 3555",
+          "Contact Person: Adje",
+        ],
+      },
+      {
+        title: "Important Notes",
+        content: [
+          "Always include your full name and phone number in the delivery details. This ensures we can quickly identify your cargo and assign a waybill number for tracking and timely delivery.",
+        ],
+      },
+      {
+        title: "Step 3: We’ll Handle the Shipping",
+        content: [
+          "Once your package arrives at our South Africa office:",
+          "- We process and prepare your cargo",
+          "- Ship to Kenya by air",
+          "- Handle customs clearance",
+          "- Notify you once it's ready for pickup or delivery",
+        ],
+      },
+      {
+        title: "Why Choose Rolling Cargo?",
+        content: [
+          "- Weekly flights from Johannesburg to Nairobi",
+          "- Competitive airfreight rates",
+          "- Efficient customs clearance",
+          "- Excellent customer service and updates",
+        ],
+      },
+    ],
+    category: "Shipping Guide",
+    image: "Amazon South Africa.jpg",
+    author: "Rolling Cargo",
+  },
+  {
+    id: 10,
+    title: "How to Shop on Amazon Dubai and Ship with Rolling Cargo",
+    excerpt:
+      "Want to shop from Amazon UAE and have your items delivered to Kenya? Let Rolling Cargo handle everything.",
+    sections: [
+      {
+        title: "Overview",
+        content: [
+          "Want to access amazing products and prices from Amazon UAE? Rolling Cargo makes it easy to shop, ship, and receive your items in Kenya — fast and stress-free.",
+        ],
+      },
+      {
+        title: "Step 1: Shop on Amazon.ae",
+        content: [
+          "Head to Amazon.ae, sign in or create an account, and browse products just like you would on Amazon US or UK.",
+        ],
+      },
+      {
+        title: "Step 2: Use Our Dubai Office Address at Checkout",
+        content: [
+          "When you’re ready to check out, enter this delivery address:",
+          "Rolling Cargo – Office Address",
+          "City: Dubai",
+          "District/Area: Deira",
+          "Street: Sabkha Road",
+          "Landmark: Behind Sabkha Bus Station",
+          "Building Name: Sabkha Building",
+          "Floor & Room: 1st Floor, Room 118",
+          "Office Telephone: +971 4 2965 432",
+          "Contact Person: Your Name & Phone Number / Aisha Nzila, +971 55 919 6774",
+        ],
+      },
+      {
+        title: "Important Notes",
+        content: [
+          "Please include your full name and phone number in the delivery address. This allows us to quickly identify your package and assign it a waybill number for tracking.",
+        ],
+      },
+      {
+        title: "Step 3: Let Rolling Cargo Handle the Rest",
+        content: [
+          "Once your package arrives, we’ll:",
+          "- Receive and process it",
+          "- Clear it through customs",
+          "- Air/Sea ship it to Kenya",
+          "- Notify you for pickup or delivery",
+        ],
+      },
+      {
+        title: "Why Shop via Rolling Cargo?",
+        content: [
+          "- Buy directly from Amazon Dubai without needing a UAE address",
+          "- Affordable, reliable, and frequent airfreight schedules",
+          "- Personal tracking and updates via WhatsApp",
+        ],
+      },
+    ],
+    category: "Shipping Guide",
+    image: "Amazon Dubai.jpg",
+    author: "Rolling Cargo",
+  },
+  {
+    id: 11,
+    title:
+      "Top 10 Online Stores in the UK and How to Ship to Kenya with Rolling Cargo",
+    excerpt:
+      "Discover the top online stores in the UK and how Rolling Cargo helps you shop and ship to Kenya hassle-free.",
+    sections: [
+      {
+        title: "Overview",
+        content: [
+          "Looking to shop from the UK? Rolling Cargo makes shipping simple! Here are 10 popular UK stores our clients shop from:",
+        ],
+      },
+      {
+        title: "Top 10 UK Online Stores",
+        content: [
+          "1. Amazon UK",
+          "2. eBay UK",
+          "3. Marks & Spencer",
+          "4. ASOS",
+          "5. Argos",
+          "6. Next",
+          "7. John Lewis",
+          "8. JD Sports",
+          "9. Boohoo",
+          "10. Sports Direct",
+        ],
+      },
+      {
+        title: "How It Works",
+        content: [
+          "1. Shop online and use our UK warehouse address as your delivery destination.",
+          "2. We consolidate, ship, and clear your items.",
+          "3. Your order arrives safely in Kenya – fast, secure, and affordable.",
+        ],
+      },
+      {
+        title: "Fast and Reliable Shipping",
+        content: [
+          "✈️ Our UK flights depart every Friday. Shopping has never been easier.",
+        ],
+      },
+    ],
+    category: "Shopping Guide",
+    image: "UK Online Stores.jpg",
     author: "Rolling Cargo",
   },
 ];
