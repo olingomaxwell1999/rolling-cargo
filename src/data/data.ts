@@ -786,7 +786,7 @@ export const customClearenceBannerContent: BannerContent = {
   title: "Custom Clearence",
   breadcrumbs: [
     { label: "Homepage", href: "/" },
-    { label: "Custom Clearence", href: "/custom-clearence" },
+    { label: "Customs Clearance", href: "/custom-clearence" },
   ],
 };
 
@@ -1352,7 +1352,7 @@ export const offices: Office[] = [
 
 export const customClearanceContent: CustomClearanceContent = {
   title: "Efficient customs Logistics.",
-  description: `In the global marketplace, rapidly changing production and delivery schedule requirements have increased the liability of customs brokers to provide expert clearance services. Rolling Cargo Ltd is widely recognized as one of Kenya’s premier customs brokers.
+  description: `In the global marketplace, rapidly changing production and delivery schedule requirements have increased the liability of customs brokers to provide expert Clearance services. Rolling Cargo Ltd is widely recognized as one of Kenya’s premier customs brokers.
 
 Rolling Cargo has a longstanding professional relationship with government agencies and this hard-earned and privileged status offers a distinctive advantage when it comes to difficult negotiations of shipments and challenges posed by bureaucratic processes in Kenya.
 
@@ -1511,6 +1511,11 @@ export const socialLinks = [
     name: "Instagram",
     icon: "Instagram",
     url: "https://www.instagram.com/rollingcargo ",
+  },
+  {
+    name: "Tiktok",
+    icon: "tiktok",
+    url: "https://www.tiktok.com/rollingcargo ",
   },
 ];
 
