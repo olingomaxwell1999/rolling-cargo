@@ -32,6 +32,8 @@ const FreightSection: React.FC = () => {
     freightCost: number;
     handlingFee: number;
     totalCost: number;
+    currency: string;
+    symbol: string;
   } | null>(null);
 
   const handleFreightTypeSelect = (type: FreightType) => {
@@ -195,6 +197,8 @@ const FreightSection: React.FC = () => {
               freightCost={calculationResult.freightCost}
               handlingFee={calculationResult.handlingFee}
               totalCost={calculationResult.totalCost}
+              currency={calculationResult.currency}
+              symbol={calculationResult.symbol}
             />
           )}
         </>

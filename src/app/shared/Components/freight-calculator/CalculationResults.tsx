@@ -4,7 +4,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { getCurrencySymbol } from "@/lib/utils";
+import { formatCurrency } from "@/lib/freightUtils";
 
 interface Props {
   freightType: "air" | "sea";
@@ -12,6 +12,8 @@ interface Props {
   freightCost: number;
   handlingFee: number;
   totalCost: number;
+  currency: string;
+  symbol: string;
 }
 
 const CalculationResults: React.FC<Props> = ({
@@ -20,9 +22,9 @@ const CalculationResults: React.FC<Props> = ({
   freightCost,
   handlingFee,
   totalCost,
+  currency,
+  symbol,
 }) => {
-  const symbol = getCurrencySymbol(country as any, freightType);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -32,23 +34,27 @@ const CalculationResults: React.FC<Props> = ({
     >
       <div className="p-4 bg-gray-100 rounded-md text-center">
         <label className="block mb-1 text-sm text-gray-600">
-          Freight Cost ({symbol})
+          Freight Cost ({symbol.trim()})
         </label>
-        <p className="text-lg font-bold">{freightCost.toFixed(2)}</p>
+        <p className="text-lg font-bold">
+          {formatCurrency(freightCost, symbol)}
+        </p>
       </div>
 
       <div className="p-4 bg-gray-100 rounded-md text-center">
         <label className="block mb-1 text-sm text-gray-600">
-          Handling Fee ({symbol})
+          Handling Fee ({symbol.trim()})
         </label>
-        <p className="text-lg font-bold">{handlingFee.toFixed(2)}</p>
+        <p className="text-lg font-bold">
+          {formatCurrency(handlingFee, symbol)}
+        </p>
       </div>
 
       <div className="p-4 bg-blue-100 rounded-md text-center">
         <label className="block mb-1 text-sm text-gray-600">
-          Total Cost ({symbol})
+          Total Cost ({symbol.trim()})
         </label>
-        <p className="text-xl font-bold">{totalCost.toFixed(2)}</p>
+        <p className="text-xl font-bold">{formatCurrency(totalCost, symbol)}</p>
       </div>
     </motion.div>
   );

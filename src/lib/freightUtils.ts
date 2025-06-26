@@ -1,20 +1,38 @@
-import { CountryName, CurrencyInfo } from "@/types/feright.types";
+// src/lib/utils.ts
 
-export const getCurrencyInfo = (
+import { CountryName } from "@/types/feright.types";
+import { airFreightRates, seaFreightRates, handlingFees } from "@/data/data";
+
+export function getCurrencySymbol(
   country: CountryName,
-  freightType: string
-): CurrencyInfo => {
-  if (country === "China" && freightType === "air")
-    return { code: "USD", symbol: "$", rate: 1 };
-  if (country === "Dubai" && freightType === "air")
-    return { code: "USD", symbol: "$", rate: 1 };
-  return {
-    UK: { code: "GBP", symbol: "£", rate: 0.79 },
-    China: { code: "USD", symbol: "$", rate: 1 },
-    Turkey: { code: "USD", symbol: "$", rate: 1 },
-    Netherlands: { code: "USD", symbol: "$", rate: 1 },
-    Italy: { code: "USD", symbol: "$", rate: 1 },
-    "South Africa": { code: "USD", symbol: "$", rate: 1 },
-    Dubai: { code: "USD", symbol: "$", rate: 1 },
-  }[country];
-};
+  freightType: "air" | "sea"
+): string {
+  if (freightType === "air") {
+    const rateData = airFreightRates[country];
+    if (rateData?.currency === "GBP") {
+      return "£";
+    }
+    return "$";
+  }
+
+  if (freightType === "sea") {
+    const rateData = seaFreightRates[country] as any;
+    if (rateData?.currency === "KSH") {
+      return "KSH ";
+    }
+    if (rateData?.currency === "GBP") {
+      return "£";
+    }
+    return "$";
+  }
+
+  return "$";
+}
+
+// Additional utility functions can be added here
+export function formatCurrency(amount: number, symbol: string): string {
+  if (symbol === "KSH ") {
+    return `${symbol}${amount.toLocaleString()}`;
+  }
+  return `${symbol}${amount.toFixed(2)}`;
+}

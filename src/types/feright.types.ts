@@ -51,6 +51,8 @@ export interface CalculationResultsProps {
   freightCost: number;
   handlingFee: number;
   totalCost: number;
+  currency: string;
+  symbol: string;
 }
 
 export interface CountrySelectorProps {

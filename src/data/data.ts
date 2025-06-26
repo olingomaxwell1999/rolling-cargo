@@ -1514,8 +1514,7 @@ export const socialLinks = [
   },
 ];
 
-// Feright Section Data (Calculator)
-
+// Freight Section Data (Calculator)
 // src/data/data.ts
 
 export type CountryName =
@@ -1539,44 +1538,48 @@ export interface CurrencyInfo {
 
 export const currencyMap: Record<CountryName, CurrencyInfo> = {
   UK: { code: "GBP", symbol: "£", rate: 0.79 },
-  China: { code: "USD", symbol: "$", rate: 1 },
+  China: { code: "KSH", symbol: "KSH", rate: 1 }, // Changed to KSH for sea freight
   Turkey: { code: "USD", symbol: "$", rate: 1 },
   Netherlands: { code: "USD", symbol: "$", rate: 1 },
   Italy: { code: "USD", symbol: "$", rate: 1 },
   "South Africa": { code: "USD", symbol: "$", rate: 1 },
-  Dubai: { code: "USD", symbol: "$", rate: 1 },
+  Dubai: { code: "KSH", symbol: "KSH", rate: 1 }, // Changed to KSH for sea freight
 };
 
 export const airFreightRates: Record<
   CountryName,
-  { baseRate: number; minimumRate?: number }
+  { baseRate: number; minimumRate?: number; currency?: string }
 > = {
-  UK: { baseRate: 6.49 }, // no min specified
-  China: { baseRate: 12, minimumRate: 15 },
-  Turkey: { baseRate: 7.5 },
-  Netherlands: { baseRate: 11 },
-  Italy: { baseRate: 11 },
-  "South Africa": { baseRate: 13 },
-  Dubai: { baseRate: 8, minimumRate: 10 },
+  UK: { baseRate: 6.49, currency: "GBP" }, // £6.49 per kg
+  China: { baseRate: 12, minimumRate: 15, currency: "USD" }, // $12 per kg, $15 minimum for ≤1kg
+  Turkey: { baseRate: 7.5, currency: "USD" }, // $7.5 per kg
+  Netherlands: { baseRate: 11, currency: "USD" }, // $11 per kg
+  Italy: { baseRate: 11, currency: "USD" }, // $11 per kg
+  "South Africa": { baseRate: 13, currency: "USD" }, // $13 per kg
+  Dubai: { baseRate: 8, minimumRate: 10, currency: "USD" }, // $8 per kg, $10 minimum for ≤1kg
 };
 
-export const handlingFees: Record<CountryName, { air: number; sea?: number }> =
-  {
-    UK: { air: 25, sea: 15 },
-    China: { air: 0 },
-    Turkey: { air: 0, sea: 10 },
-    Netherlands: { air: 40, sea: 20 },
-    Italy: { air: 40 },
-    "South Africa": { air: 0 },
-    Dubai: { air: 0 },
-  };
+export const handlingFees: Record<
+  CountryName,
+  { air: number; sea?: number; airCurrency?: string; seaCurrency?: string }
+> = {
+  UK: { air: 25, sea: 15, airCurrency: "GBP", seaCurrency: "GBP" }, // £25 air, £15 sea
+  China: { air: 0, sea: 0 }, // No handling fees
+  Turkey: { air: 0, sea: 10, seaCurrency: "USD" }, // $10 sea handling
+  Netherlands: { air: 40, sea: 20, airCurrency: "USD", seaCurrency: "USD" }, // $40 air, $20 sea
+  Italy: { air: 40, airCurrency: "USD" }, // $40 air handling
+  "South Africa": { air: 0 }, // No handling fees
+  Dubai: { air: 0, sea: 0 }, // No handling fees
+};
 
-export const seaFreightRates: Partial<Record<CountryName, SeaFreightRate>> = {
-  UK: { regular: 5 },
-  Dubai: { regular: 60000, small: 12000 },
-  China: { regular: 60000, small: 12000 },
-  Turkey: { regular: 750, large: 600 },
-  Netherlands: { regular: 10 },
+export const seaFreightRates: Partial<
+  Record<CountryName, SeaFreightRate & { currency?: string }>
+> = {
+  UK: { regular: 5, currency: "GBP" }, // £5 per CBM
+  Dubai: { regular: 60000, small: 12000, currency: "KSH" }, // KSH 60,000 per CBM, KSH 12,000 for ≤0.2CBM
+  China: { regular: 60000, small: 12000, currency: "KSH" }, // KSH 60,000 per CBM, KSH 12,000 for ≤0.2CBM
+  Turkey: { regular: 750, currency: "USD" }, // $750 per CBM
+  Netherlands: { regular: 10, currency: "USD" }, // $10 per CBM
 };
 
 export const airFreightCountries: CountryName[] = [

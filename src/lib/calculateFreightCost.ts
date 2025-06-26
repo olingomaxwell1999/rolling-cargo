@@ -9,6 +9,8 @@ export interface CalculationResult {
   freightCost: number;
   handlingFee: number;
   totalCost: number;
+  currency: string;
+  symbol: string;
 }
 
 export function calculateFreightCost(
@@ -19,13 +21,24 @@ export function calculateFreightCost(
 ): CalculationResult {
   let freightCost = 0;
   let handlingFee = 0;
+  let currency = "USD";
+  let symbol = "$";
 
   if (type === "air") {
     const rateData = airFreightRates[country];
     if (!rateData) throw new Error(`No air rate found for ${country}`);
 
-    const { baseRate, minimumRate } = rateData;
+    const { baseRate, minimumRate, currency: rateCurrency } = rateData;
     if (!weight) throw new Error("Weight is required for air freight");
+
+    // Set currency based on country
+    if (rateCurrency === "GBP") {
+      currency = "GBP";
+      symbol = "£";
+    } else {
+      currency = "USD";
+      symbol = "$";
+    }
 
     freightCost = weight * baseRate;
 
@@ -34,12 +47,35 @@ export function calculateFreightCost(
       freightCost = minimumRate;
     }
 
-    handlingFee = handlingFees[country]?.air || 0;
+    // Get handling fee
+    const handlingData = handlingFees[country];
+    if (handlingData?.air) {
+      handlingFee = handlingData.air;
+      // Use handling fee currency if specified
+      if (handlingData.airCurrency === "GBP") {
+        currency = "GBP";
+        symbol = "£";
+      }
+    }
   }
 
   if (type === "sea") {
-    const rateData = seaFreightRates[country] as SeaFreightRate;
+    const rateData = seaFreightRates[country] as SeaFreightRate & {
+      currency?: string;
+    };
     if (!rateData) throw new Error(`No sea rate found for ${country}`);
+
+    // Set currency based on rate data
+    if (rateData.currency === "KSH") {
+      currency = "KSH";
+      symbol = "KSH ";
+    } else if (rateData.currency === "GBP") {
+      currency = "GBP";
+      symbol = "£";
+    } else {
+      currency = "USD";
+      symbol = "$";
+    }
 
     if (typeof rateData === "number") {
       // Simple per CBM rate
@@ -56,7 +92,16 @@ export function calculateFreightCost(
       }
     }
 
-    handlingFee = handlingFees[country]?.sea || 0;
+    // Get handling fee
+    const handlingData = handlingFees[country];
+    if (handlingData?.sea) {
+      handlingFee = handlingData.sea;
+      // Keep the freight currency for sea freight unless handling fee specifies different currency
+      if (handlingData.seaCurrency === "GBP" && rateData.currency !== "KSH") {
+        currency = "GBP";
+        symbol = "£";
+      }
+    }
   }
 
   const totalCost = freightCost + handlingFee;
@@ -65,5 +110,7 @@ export function calculateFreightCost(
     freightCost,
     handlingFee,
     totalCost,
+    currency,
+    symbol,
   };
 }
