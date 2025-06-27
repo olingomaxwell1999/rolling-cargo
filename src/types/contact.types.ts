@@ -3,6 +3,9 @@ import { SubmitHandler } from "react-hook-form";
 export interface FormInputs {
   name: string;
   email: string;
+  phone?: string;
+  company?: string;
+  subject: string;
   message: string;
 }
 
@@ -24,4 +27,5 @@ export interface ContactFormProps {
 
 export interface OfficeInfoProps {
   office: Office;
+  index: number;
 }
