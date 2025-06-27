@@ -35,6 +35,7 @@ const FreightSection: React.FC = () => {
     currency: string;
     symbol: string;
   } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleFreightTypeSelect = (type: FreightType) => {
     setFreightType(type);
@@ -54,6 +55,34 @@ const FreightSection: React.FC = () => {
   const handleCountrySelect = (country: CountryName) => {
     setSelectedCountry(country);
     setCalculationResult(null);
+  };
+
+  const calculateCost = () => {
+    if (!freightType || !selectedCountry) return;
+
+    try {
+      if (freightType === "air") {
+        const weight = parseFloat(formData.weight);
+        if (isNaN(weight) || weight <= 0) return;
+      }
+
+      if (freightType === "sea") {
+        const cbm = parseFloat(formData.cbm);
+        if (isNaN(cbm) || cbm <= 0) return;
+      }
+
+      const result = calculateFreightCost(
+        freightType,
+        selectedCountry,
+        parseFloat(formData.weight),
+        parseFloat(formData.cbm)
+      );
+
+      setCalculationResult(result);
+    } catch (error) {
+      console.error(error);
+      setCalculationResult(null);
+    }
   };
 
   const handleChange = (
@@ -83,10 +112,16 @@ const FreightSection: React.FC = () => {
       }
     }
 
-    setFormData({ ...formData, [id]: value });
+    const newFormData = { ...formData, [id]: value };
+    setFormData(newFormData);
+
+    // Calculate cost immediately when relevant fields change
+    if (id === "weight" || id === "cbm") {
+      setTimeout(calculateCost, 100); // Small delay to ensure state is updated
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!freightType || !selectedCountry) {
@@ -146,7 +181,11 @@ const FreightSection: React.FC = () => {
       return;
     }
 
+    setErrors({});
+    setIsSubmitting(true);
+
     try {
+      // Calculate final cost for email
       const result = calculateFreightCost(
         freightType,
         selectedCountry,
@@ -154,10 +193,151 @@ const FreightSection: React.FC = () => {
         parseFloat(formData.cbm)
       );
 
-      setCalculationResult(result);
+      // Prepare email data
+      const emailData = {
+        to: "sales@rollingcargo.co.ke",
+        subject: `Freight Quote Request - ${name}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
+              New Freight Quote Request
+            </h2>
+            
+            <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="color: #374151; margin-top: 0;">Customer Information:</h3>
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Phone:</strong> ${phone}</p>
+              <p><strong>Email:</strong> ${email}</p>
+            </div>
+            
+            <div style="background-color: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="color: #374151; margin-top: 0;">Shipment Details:</h3>
+              <p><strong>Freight Type:</strong> ${freightType.toUpperCase()}</p>
+              <p><strong>Destination:</strong> ${selectedCountry}</p>
+              ${
+                freightType === "air"
+                  ? `
+                <p><strong>Weight:</strong> ${formData.weight} kg</p>
+                <p><strong>Dimensions:</strong> ${formData.length} x ${
+                      formData.width
+                    } x ${formData.height} cm</p>
+                ${
+                  volumetricWeight
+                    ? `<p><strong>Volumetric Weight:</strong> ${volumetricWeight.toFixed(
+                        2
+                      )} kg</p>`
+                    : ""
+                }
+              `
+                  : `
+                <p><strong>CBM:</strong> ${formData.cbm}</p>
+              `
+              }
+            </div>
+            
+            <div style="background-color: #f0fdf4; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="color: #374151; margin-top: 0;">Calculated Costs:</h3>
+              <p><strong>Freight Cost:</strong> ${
+                result.symbol
+              }${result.freightCost.toFixed(2)}</p>
+              <p><strong>Handling Fee:</strong> ${
+                result.symbol
+              }${result.handlingFee.toFixed(2)}</p>
+              <p style="font-size: 18px; color: #059669;"><strong>Total Cost:</strong> ${
+                result.symbol
+              }${result.totalCost.toFixed(2)}</p>
+            </div>
+            
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;">
+              <p>This quote is automatically generated from rollingcargo.co.ke</p>
+              <p>Please contact the customer for further details and confirmation.</p>
+            </div>
+          </div>
+        `,
+      };
+
+      // Send email using the API route
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(emailData),
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok && responseData.success) {
+        alert(
+          "Thank you! Your freight quote request has been submitted successfully. We'll contact you soon."
+        );
+        // Reset form
+        setFormData({
+          weight: "",
+          length: "",
+          width: "",
+          height: "",
+          cbm: "",
+          name: "",
+          phone: "",
+          email: "",
+        });
+        setVolumetricWeight(null);
+        setCalculationResult(null);
+      } else {
+        throw new Error(responseData.error || "Failed to send email");
+      }
     } catch (error) {
-      console.error(error);
-      alert("Error calculating cost. Please check your input.");
+      console.error("Error submitting form:", error);
+
+      // Enhanced fallback: create mailto link
+      const subject = encodeURIComponent(`Freight Quote Request - ${name}`);
+      const body = encodeURIComponent(`
+Customer Information:
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+
+Shipment Details:
+Freight Type: ${freightType.toUpperCase()}
+Destination: ${selectedCountry}
+${
+  freightType === "air"
+    ? `
+Weight: ${formData.weight} kg
+Dimensions: ${formData.length} x ${formData.width} x ${formData.height} cm
+${
+  volumetricWeight ? `Volumetric Weight: ${volumetricWeight.toFixed(2)} kg` : ""
+}
+`
+    : `
+CBM: ${formData.cbm}
+`
+}
+
+Calculated Costs:
+Freight Cost: ${
+        calculationResult?.symbol
+      }${calculationResult?.freightCost.toFixed(2)}
+Handling Fee: ${
+        calculationResult?.symbol
+      }${calculationResult?.handlingFee.toFixed(2)}
+Total Cost: ${calculationResult?.symbol}${calculationResult?.totalCost.toFixed(
+        2
+      )}
+
+---
+Generated from rollingcargo.co.ke
+      `);
+
+      const mailtoLink = `mailto:sales@rollingcargo.co.ke?subject=${subject}&body=${body}`;
+      window.open(mailtoLink, "_blank");
+
+      alert(
+        "There was an issue sending the email automatically. Your email client has been opened with the quote details. Please send the email to complete your request."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -188,6 +368,7 @@ const FreightSection: React.FC = () => {
             freightType={freightType}
             selectedCountry={selectedCountry}
             volumetricWeight={volumetricWeight}
+            isSubmitting={isSubmitting}
           />
 
           {calculationResult && (

@@ -43,6 +43,7 @@ export interface FreightFormProps {
   freightType: FreightType | null;
   selectedCountry: CountryName | null;
   volumetricWeight: number | null;
+  isSubmitting?: boolean;
 }
 
 export interface CalculationResultsProps {
