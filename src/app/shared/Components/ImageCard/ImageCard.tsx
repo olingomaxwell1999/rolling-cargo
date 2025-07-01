@@ -19,7 +19,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ item, index, openLightbox }) => {
       {/* Image Container */}
       <div className="relative aspect-square">
         <Image
-          src={item.image}
+          src={item.image ?? "/placeholder.png"}
           alt={item.category}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
