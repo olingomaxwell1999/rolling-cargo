@@ -66,7 +66,7 @@ export const NAVIGATION_LINKS = {
     { name: "Feedback", href: "/feedback", icon: MessageSquare },
     { name: "FAQ", href: "/faq", icon: HelpCircle },
     { name: "Contact Us", href: "/contact-us", icon: Phone },
-    { name: "Terms & Conditions", href: "/terms-conditions", icon: FileText },
+    { name: "Terms & Conditions", href: "/terms-&-conditions", icon: FileText },
     { name: "Privacy Policy", href: "/privacy-policy", icon: Shield },
   ],
 } as const;
@@ -85,6 +85,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-01-15",
     views: 1247,
     likes: 89,
+    type: "image",
   },
   {
     id: 2,
@@ -97,6 +98,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-01-20",
     views: 892,
     likes: 67,
+    type: "image",
   },
   {
     id: 3,
@@ -109,6 +111,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-01-25",
     views: 654,
     likes: 45,
+    type: "image",
   },
   {
     id: 4,
@@ -121,6 +124,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-02-01",
     views: 321,
     likes: 23,
+    type: "image",
   },
   {
     id: 5,
@@ -133,6 +137,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-02-05",
     views: 456,
     likes: 34,
+    type: "image",
   },
   {
     id: 6,
@@ -145,6 +150,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-02-10",
     views: 1345,
     likes: 112,
+    type: "image",
   },
   {
     id: 7,
@@ -157,6 +163,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-02-15",
     views: 765,
     likes: 56,
+    type: "image",
   },
   {
     id: 8,
@@ -169,6 +176,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-02-20",
     views: 543,
     likes: 39,
+    type: "image",
   },
   {
     id: 9,
@@ -181,6 +189,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-02-25",
     views: 678,
     likes: 48,
+    type: "image",
   },
   {
     id: 10,
@@ -193,6 +202,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-03-01",
     views: 890,
     likes: 67,
+    type: "image",
   },
   {
     id: 11,
@@ -205,6 +215,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-03-05",
     views: 432,
     likes: 29,
+    type: "image",
   },
   {
     id: 12,
@@ -217,6 +228,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-03-10",
     views: 567,
     likes: 38,
+    type: "image",
   },
   {
     id: 13,
@@ -229,6 +241,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-03-15",
     views: 789,
     likes: 45,
+    type: "image",
   },
   {
     id: 14,
@@ -241,6 +254,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-03-20",
     views: 890,
     likes: 56,
+    type: "image",
   },
   {
     id: 15,
@@ -253,6 +267,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-03-25",
     views: 1023,
     likes: 78,
+    type: "image",
   },
   {
     id: 16,
@@ -265,6 +280,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-03-30",
     views: 1345,
     likes: 89,
+    type: "image",
   },
   {
     id: 17,
@@ -277,6 +293,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-04-05",
     views: 456,
     likes: 34,
+    type: "image",
   },
   {
     id: 18,
@@ -289,6 +306,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-04-10",
     views: 678,
     likes: 45,
+    type: "image",
   },
   {
     id: 19,
@@ -301,6 +319,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-04-15",
     views: 890,
     likes: 67,
+    type: "image",
   },
   {
     id: 20,
@@ -313,6 +332,45 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     date: "2024-04-20",
     views: 432,
     likes: 29,
+    type: "image",
+  },
+  {
+    id: 21,
+    title: "Drone Overview of Logistics Center",
+    description:
+      "Aerial drone footage showing operations inside a modern logistics center.",
+    category: "logistics",
+    tags: ["drone", "aerial", "logistics"],
+    video: "https://www.w3schools.com/html/mov_bbb.mp4 ",
+    date: "2024-04-25",
+    views: 789,
+    likes: 56,
+    type: "video",
+  },
+  {
+    id: 22,
+    title: "Cargo Ship Timelapse",
+    description: "Timelapse of cargo ship loading at night under floodlights.",
+    category: "shipping",
+    tags: ["ship", "night", "cargo"],
+    video: "https://www.w3schools.com/html/movie.mp4 ",
+    date: "2024-04-26",
+    views: 987,
+    likes: 65,
+    type: "video",
+  },
+  {
+    id: 23,
+    title: "Warehouse Automation Demo",
+    description:
+      "Video demonstration of automated warehouse systems in action.",
+    category: "automation",
+    tags: ["robotics", "automation", "warehouses"],
+    video: "https://www.w3schools.com/html/mov_bbb.mp4 ",
+    date: "2024-04-27",
+    views: 654,
+    likes: 43,
+    type: "video",
   },
 ];
 
@@ -1348,7 +1406,7 @@ export const offices: Office[] = [
   },
 ];
 
-// Custom Clearence Page Data
+// Customs Clearence Page Data
 
 export const customClearanceContent: CustomClearanceContent = {
   title: "Efficient customs Logistics.",
@@ -1367,7 +1425,7 @@ Import Duty & Tax Assessment
 Classification of goods
 Customs Surveying
 Import / Export Permissions of controlled goods
-Payment of Custom Duties on clients behalf
+Payment of Customs Duties on clients behalf
 Consultancy Services
 Transit Customs Handling`,
 };
@@ -1520,7 +1578,6 @@ export const socialLinks = [
 ];
 
 // Freight Section Data (Calculator)
-// src/data/data.ts
 
 export type CountryName =
   | "UK"
@@ -1538,17 +1595,17 @@ export type SeaFreightRate =
 export interface CurrencyInfo {
   code: string;
   symbol: string;
-  rate: number; // Conversion to USD if needed
+  rate: number;
 }
 
 export const currencyMap: Record<CountryName, CurrencyInfo> = {
   UK: { code: "GBP", symbol: "£", rate: 0.79 },
-  China: { code: "KSH", symbol: "KSH", rate: 1 }, // Changed to KSH for sea freight
+  China: { code: "KSH", symbol: "KSH", rate: 1 },
   Turkey: { code: "USD", symbol: "$", rate: 1 },
   Netherlands: { code: "USD", symbol: "$", rate: 1 },
   Italy: { code: "USD", symbol: "$", rate: 1 },
   "South Africa": { code: "USD", symbol: "$", rate: 1 },
-  Dubai: { code: "KSH", symbol: "KSH", rate: 1 }, // Changed to KSH for sea freight
+  Dubai: { code: "KSH", symbol: "KSH", rate: 1 },
 };
 
 export const airFreightRates: Record<

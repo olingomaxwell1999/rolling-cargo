@@ -254,26 +254,36 @@ const Lightbox: React.FC<LightboxProps> = ({
         </button>
       </div>
 
-      {/* Image Container */}
+      {/* Media Container */}
       <div
         className="relative max-w-[90vw] max-h-[85vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <Image
-          src={image.image}
-          alt={image.title}
-          width={1200}
-          height={800}
-          className="object-contain w-auto h-auto max-w-full max-h-[85vh] transition-transform duration-300 ease-in-out"
-          style={{
-            transform: `scale(${zoom}) rotate(${rotation}deg)`,
-          }}
-        />
+        {image.type === "image" && (
+          <Image
+            src={image.image!}
+            alt={image.title}
+            width={1200}
+            height={800}
+            className="object-contain w-auto h-auto max-w-full max-h-[85vh] transition-transform duration-300 ease-in-out"
+            style={{
+              transform: `scale(${zoom}) rotate(${rotation}deg)`,
+            }}
+          />
+        )}
+
+        {image.type === "video" && (
+          <video
+            src={image.video}
+            controls
+            className="w-full h-auto max-w-full max-h-[85vh]"
+            autoPlay
+            muted
+          />
+        )}
       </div>
     </div>
   );
 };
 
 export default Lightbox;
-// Note: The Lightbox component is designed to be used in a gallery context, where it can display images in a modal view with zoom and rotation capabilities. The component also includes navigation buttons for cycling through images, as well as controls for zooming and rotating the image.
-// The component is responsive and adapts to different screen sizes, ensuring a good user experience on both desktop and mobile devices. The use of Tailwind CSS classes allows for easy customization of styles and layout.

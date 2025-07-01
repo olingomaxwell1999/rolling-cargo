@@ -1,8 +1,6 @@
-"use client";
 import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CATEGORIES, GALLERY_ITEMS } from "@/data/data";
-// import SearchBar from "../SearchBar/SearchBar";
 import GalleryGrid from "../GalleryGrid/GalleryGrid";
 import GalleryList from "../GalleryList/GalleryList";
 import Lightbox from "../Lightbox/Lightbox";
@@ -30,6 +28,7 @@ const GalleryPage: React.FC = () => {
   const [zoom, setZoom] = useState<number>(1);
   const [rotation, setRotation] = useState<number>(0);
   const [isSlideshow, setIsSlideshow] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<"photos" | "videos">("photos");
 
   const filteredImages = useMemo(() => {
     let filtered = GALLERY_ITEMS.filter((item) => {
@@ -51,16 +50,19 @@ const GalleryPage: React.FC = () => {
         case "views":
           return b.views - a.views;
         case "likes":
-          // 'likes' property does not exist on GalleryItem, fallback to date
-          return new Date(b.date).getTime() - new Date(a.date).getTime();
+          return b.likes - a.likes;
         case "title":
           return a.title.localeCompare(b.title);
         default:
           return 0;
       }
     });
-    return filtered;
-  }, [searchTerm, selectedCategory, sortBy]);
+
+    // Filter by active tab
+    return filtered.filter((item) =>
+      activeTab === "photos" ? item.type === "image" : item.type === "video"
+    );
+  }, [searchTerm, selectedCategory, sortBy, activeTab]);
 
   const navigateImage = React.useCallback(
     (direction: "prev" | "next") => {
@@ -133,7 +135,7 @@ const GalleryPage: React.FC = () => {
 
   const handleDownload = (image: GalleryItem) => {
     const link = document.createElement("a");
-    link.href = image.image;
+    link.href = image.image || "";
     link.download = `${image.title.replace(/\s+/g, "-").toLowerCase()}.jpg`;
     link.click();
   };
@@ -173,43 +175,35 @@ const GalleryPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br pt-10 from-slate-50 via-white to-blue-50/30">
-      {/* Hero Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative overflow-hidden bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-white"
-      >
-        {/* Hero content */}
-      </motion.div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Search & Filters */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 30 }}
+        {/* Tab Switcher */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12 space-y-8"
+          className="mb-8 flex justify-center space-x-4"
         >
-          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        </motion.div> */}
-
-        {/* Results Count */}
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-8"
-        >
-          <p className="text-gray-600 text-lg">
-            Showing{" "}
-            <span className="font-semibold text-blue-600">
-              {filteredImages.length}
-            </span>{" "}
-            of <span className="font-semibold">{GALLERY_ITEMS.length}</span>{" "}
-            images
-          </p>
-        </motion.div> */}
+          <button
+            onClick={() => setActiveTab("photos")}
+            className={`px-6 py-2 rounded-full transition-all ${
+              activeTab === "photos"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+          >
+            Photos
+          </button>
+          <button
+            onClick={() => setActiveTab("videos")}
+            className={`px-6 py-2 rounded-full transition-all ${
+              activeTab === "videos"
+                ? "bg-purple-600 text-white"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+          >
+            Videos
+          </button>
+        </motion.div>
 
         {/* Gallery View */}
         <AnimatePresence mode="wait">
@@ -256,7 +250,7 @@ const GalleryPage: React.FC = () => {
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-gray-600 mb-4">
-              No images found
+              No items found
             </h3>
             <p className="text-gray-500 text-lg max-w-md mx-auto">
               Try adjusting your search terms or filters to discover more

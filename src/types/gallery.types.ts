@@ -1,16 +1,20 @@
 // src/types/gallery.types.ts
+
 export interface GalleryItem {
   id: number;
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  video?: string;
   category: string;
   tags: string[];
   date: string;
   views: number;
   likes: number;
   comments?: number;
+  type: "image" | "video";
 }
+
 export interface Category {
   id: string;
   name: string;
@@ -43,16 +47,5 @@ export interface GalleryListProps {
   toggleLike: (id: number) => void;
   handleShare: (item: GalleryItem) => void;
   handleDownload: (item: GalleryItem) => void;
-  openLightbox: (item: GalleryItem, index: number) => void;
-}
-
-interface ImageCardPropsNew {
-  item: GalleryItem;
-  index: number;
-  layout?: "grid" | "list";
-  liked: boolean;
-  toggleLike: () => void;
-  handleShare: () => void;
-  handleDownload: () => void;
   openLightbox: (item: GalleryItem, index: number) => void;
 }
