@@ -134,7 +134,7 @@ const Galler: React.FC = () => {
 
   const handleDownload = (image: GalleryItem) => {
     const link = document.createElement("a");
-    link.href = image.image;
+    link.href = image.image ?? "";
     link.download = `${image.title.replace(/\s+/g, "-").toLowerCase()}.jpg`;
     link.click();
   };
