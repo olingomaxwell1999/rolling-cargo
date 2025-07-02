@@ -67,7 +67,7 @@ export const NAVIGATION_LINKS = {
     { name: "FAQ", href: "/faq", icon: HelpCircle },
     { name: "Contact Us", href: "/contact-us", icon: Phone },
     { name: "Terms & Conditions", href: "/terms-&-conditions", icon: FileText },
-    { name: "Privacy Policy", href: "/privacy-policy", icon: Shield },
+    { name: "Privacy Policy", href: "/privacy", icon: Shield },
   ],
 } as const;
 
